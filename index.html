@@ -6,64 +6,7 @@
 
   <body style="text-align:center;">
     <div id="wizard" class="swMain">
-    <!--<ul>
-      <li><a href="#step-1">
-            <label class="stepNumber">1</label>
-            <span class="stepDesc">
-               Step 1<br />
-               <small>Step 1 description</small>
-            </span>
-        </a></li>
-      <li><a href="#step-2">
-            <label class="stepNumber">2</label>
-            <span class="stepDesc">
-               Step 2<br />
-               <small>Step 2 description</small>
-            </span>
-        </a></li>
-      <li><a href="#step-3">
-            <label class="stepNumber">3</label>
-            <span class="stepDesc">
-               Step 3<br />
-               <small>Step 3 description</small>
-            </span>
-         </a></li>
-      <li><a href="#step-4">
-            <label class="stepNumber">4</label>
-            <span class="stepDesc">
-               Step 4<br />
-               <small>Step 4 description</small>
-            </span>
-        </a></li>
-        <li><a href="#step-5">
-              <label class="stepNumber">5</label>
-              <span class="stepDesc">
-                 Step 5<br />
-                 <small>Step 5 description</small>
-              </span>
-          </a></li>
-    </ul>
-    <div id="step-1">
-        <h2 class="StepTitle">Step 1 Content</h2>
-         step content
     </div>
-    <div id="step-2">
-        <h2 class="StepTitle">Step 2 Content</h2>
-         <!-- step content -->
-    <!--</div>
-    <div id="step-3">
-        <h2 class="StepTitle">Step 3 Title</h2>
-         <!-- step content -->
-         <!--</div>
-    <div id="step-4">
-        <h2 class="StepTitle">Step 4 Title</h2>
-         <!-- step content -->
-         <!--</div>
-    <div id="step-5">
-        <h2 class="StepTitle">Step 5 Title</h2>
-         <!-- step content -->
-    <!--</div>-->
-</div>
   </body>
 
   <script type="text/javascript" src="./js/jquery-2.0.0.min.js"></script>
@@ -144,7 +87,9 @@
   }
 
   function onFinishCallback(objs, context){
-      alert('Thanks for participating')
+    if(validateSteps(context.fromStep))
+      alert('thanks!');
+      window.location.href = './results.html?json=[' + JSON.stringify(jsonfile) + ']';
   }
 
   function validateSteps(stepNumber) {
@@ -153,16 +98,48 @@
     return runValidation(stepNumber);
   }
 
+  //var jsonfile = [];
+  var jsonfile;
+
   function runValidation(stepNumber) {
     var choice = false;
     var item = stepNumber - 1;
-    console.log(item);
+    var currentCategory;
+    var currentValue;
+    //var jobject;
+
 
     $.each($('.choices').eq(item).children('input[type="radio"]'), function(i, val) {
       if($(val).prop('checked')){
-        console.log('can pass!');
+
         choice = true;
+
         setError(stepNumber, false);
+
+        currentCategory = String($('.StepTitle').eq(item).text()).trim();
+        currentValue = $(val).val();
+
+
+        console.log('Item::' + item);
+        console.log(currentCategory);
+        console.log(currentValue);
+
+        //console.log(jsonfile);
+
+        if(jsonfile == undefined){
+
+          //jsonfile.push({"user": "EdGuz", "selections": [{"currentCategory": currentCategory, "selection": currentValue}]});
+          jsonfile = {"user": "EdGuz", "selections": [{"currentCategory": currentCategory, "selection": currentValue}]};
+          console.log(jsonfile.selections);
+
+        } else if(jsonfile.selections[item] == undefined) {
+          jsonfile.selections.push({"currentCategory": currentCategory, "selection": currentValue});
+
+        } else {
+          jsonfile.selections[item].currentCategory = currentCategory;
+          jsonfile.selections[item].selection = currentValue;
+        }
+
         return false
       } else {
         choice = false;
@@ -174,6 +151,7 @@
       setError(stepNumber, true);
 
 
+      console.log(JSON.stringify(jsonfile));
     return choice;
   }
 
