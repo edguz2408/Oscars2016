@@ -1,0 +1,138 @@
+{
+   "oscars2016":[
+      {
+         "Category":"BEST PICTURE",
+         "Nominees":[
+            {
+               "Movie":"The Big Short"
+            },
+            {
+               "Movie":"Bridge of Spies"
+            },
+            {
+               "Movie":"Brooklyn"
+            },
+            {
+               "Movie":"Mad Max: Fury Road"
+            },
+            {
+               "Movie":"The Martian"
+            },
+            {
+               "Movie":"The Revenant"
+            },
+            {
+               "Movie":"Room"
+            },
+            {
+               "Movie":"Spotlight"
+            }
+         ],
+         "Category_Type":"Movie"
+      },
+      {
+         "Category":"ACTOR IN A LEADING ROLE",
+         "Nominees":[
+            {
+               "Actor":"Bryan Cranston",
+               "Movie":"Trumbo"
+            },
+            {
+               "Actor":"Matt Damon",
+               "Movie":"The Martian"
+            },
+            {
+               "Actor":"Matt Damon",
+               "Movie":"Leonardo DiCaprio"
+            },
+            {
+               "Actor":"Michael Fassbender",
+               "Movie":"Leonardo Steve Jobs"
+            },
+            {
+               "Actor":"Eddie Redmayne",
+               "Movie":"The Danish Girl"
+            }
+         ],
+         "Category_Type":"Actor"
+      },
+      {
+         "Category":"ACTRESS IN A LEADING ROLE",
+         "Nominees":[
+            {
+               "Actor":"Cate Blanchett",
+               "Movie":"Carol"
+            },
+            {
+               "Actor":"Brie Larson",
+               "Movie":"Room"
+            },
+            {
+               "Actor":"Jennifer Lawrence",
+               "Movie":"Joy"
+            },
+            {
+               "Actor":"Charlotte Rampling",
+               "Movie":"Leonardo Steve Jobs"
+            },
+            {
+               "Actor":"Saoirse Ronan",
+               "Movie":"Brooklyn"
+            }
+         ],
+         "Category_Type":"Actor"
+      },
+      {
+         "Category":"ACTOR IN A SUPPORTING ROLE",
+         "Nominees":[
+            {
+               "Actor":"Christian Bale",
+               "Movie":"The Big Short"
+            },
+            {
+               "Actor":"Tom Hardy",
+               "Movie":"The Revenant"
+            },
+            {
+               "Actor":"Mark Ruffalo",
+               "Movie":"Spotlight"
+            },
+            {
+               "Actor":"Mark Rylance",
+               "Movie":"Bridge of Spies"
+            },
+            {
+               "Actor":"Sylvester Stallone",
+               "Movie":"Creed"
+            }
+         ],
+         "Category_Type":"Actor"
+      },
+      {
+         "Category":"BEST DIRECTOR",
+         "Nominees":[
+            {
+               "Director":"Adam McKay",
+               "Movie":"The Big Short"
+            },
+            {
+               "Director":"George Miller",
+               "Movie":"Mad Max: Fury Road"
+            },
+            {
+               "Director":"Alejandro G. Iñárritu",
+               "Movie":"The Revenant"
+            },
+            {
+               "Director":"Lenny Abrahamson",
+               "Movie":"Room"
+            },
+            {
+               "Director":"Tom McCarthy",
+               "Movie":"Spotlight"
+            }
+         ],
+         "Category_Type":"Director"
+      }
+   ]
+}

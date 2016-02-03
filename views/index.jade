@@ -1,0 +1,69 @@
+extends layout
+
+html
+  head
+    link(href="./styles/smart_wizard_vertical.css", rel="stylesheet", type="text/css")
+  body(style="text-align:center;")
+    block content
+      #wizard.swMain
+      //
+        <ul>
+              <li><a href="#step-1">
+                    <label class="stepNumber">1</label>
+                    <span class="stepDesc">
+                       Step 1<br />
+                       <small>Step 1 description</small>
+                    </span>
+                </a></li>
+              <li><a href="#step-2">
+                    <label class="stepNumber">2</label>
+                    <span class="stepDesc">
+                       Step 2<br />
+                       <small>Step 2 description</small>
+                    </span>
+                </a></li>
+              <li><a href="#step-3">
+                    <label class="stepNumber">3</label>
+                    <span class="stepDesc">
+                       Step 3<br />
+                       <small>Step 3 description</small>
+                    </span>
+                 </a></li>
+              <li><a href="#step-4">
+                    <label class="stepNumber">4</label>
+                    <span class="stepDesc">
+                       Step 4<br />
+                       <small>Step 4 description</small>
+                    </span>
+                </a></li>
+                <li><a href="#step-5">
+                      <label class="stepNumber">5</label>
+                      <span class="stepDesc">
+                         Step 5<br />
+                         <small>Step 5 description</small>
+                      </span>
+                  </a></li>
+            </ul>
+            <div id="step-1">
+                <h2 class="StepTitle">Step 1 Content</h2>
+                 step content
+            </div>
+            <div id="step-2">
+                <h2 class="StepTitle">Step 2 Content</h2>
+                 <!-- step content 
+      //
+        </div>
+            <div id="step-3">
+                <h2 class="StepTitle">Step 3 Title</h2>
+                 <!-- step content 
+      //
+        </div>
+            <div id="step-4">
+                <h2 class="StepTitle">Step 4 Title</h2>
+                 <!-- step content 
+      //
+        </div>
+            <div id="step-5">
+                <h2 class="StepTitle">Step 5 Title</h2>
+                 <!-- step content 
+      // </div>
