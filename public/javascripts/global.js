@@ -1,8 +1,8 @@
 $(document).ready(function() {
-   // Initialize Smart Wizard with ajax content load
-    //$('#wizard').smartWizard();
-   console.log('Ready');
-   populateInfo();
+  // Initialize Smart Wizard with ajax content load
+  //$('#wizard').smartWizard();
+  console.log('Ready');
+  populateInfo();
 
 
 });
@@ -23,30 +23,30 @@ function populateInfo() {
 
       //lis
       lis += '<li><a href="#step-' + parseInt(index + 1) + '" style="width:350px;">'
-      lis += '<label class="stepNumber">'+parseInt(index + 1)+'</label>';
-      lis += '<span class="stepDesc">'+ value.Category + '</br></span>';
+      lis += '<label class="stepNumber">' + parseInt(index + 1) + '</label>';
+      lis += '<span class="stepDesc">' + value.Category + '</br></span>';
       lis += '</a></li>';
 
       //Divs
-      divs += '<div id="step-'+ parseInt(index + 1) +'">';
+      divs += '<div id="step-' + parseInt(index + 1) + '">';
       divs += '<h2 class="StepTitle"> ' + value.Category + ' </h2>';
       divs += '<div style="margin-bottom: 15px;"></div>';
       divs += '<div class="choices">';
 
       $.each(value.Nominees, function(i, val) {
 
-        if(value.Category_Type == 'Movie'){
-          divs += '<input type="radio" value="' +val.Movie +'" name="'+value.Category_Type+'"  />' +val.Movie;
-        } else if (value.Category_Type == 'Director'){
-          divs += '<input type="radio" value="' +val.Director +'" name="'+value.Category_Type+'"  />' + val.Director + ' &#x2012 ' +val.Movie;
-        } else{
-          divs += '<input type="radio" value="' + val.Actor +'" name="'+ value.Category_Type +'"  />' + val.Actor + ' &#x2012 ' +val.Movie;
+        if (value.Category_Type == 'Movie') {
+          divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '"  />' + val.Movie;
+        } else if (value.Category_Type == 'Director') {
+          divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category_Type + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
+        } else {
+          divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category_Type + '"  />' + val.Actor + ' &#x2012 ' + val.Movie;
         }
 
         divs += '</br>';
 
       });
-      divs += '<input type="radio" value="NA" name="'+value.Category_Type+'" /> N/A';
+      divs += '<input type="radio" value="NA" name="' + value.Category_Type + '" /> N/A';
       divs += '</div>';
       divs += '</div>';
       divs += '</div>';
@@ -55,9 +55,9 @@ function populateInfo() {
     $('#categories').append(lis);
     $('#wizard').append(divs);
 
-    $('#wizard').smartWizard( {
-      onLeaveStep:leaveAStepCallback,
-      onFinish:onFinishCallback
+    $('#wizard').smartWizard({
+      onLeaveStep: leaveAStepCallback,
+      onFinish: onFinishCallback
 
     });
 
@@ -65,18 +65,31 @@ function populateInfo() {
   });
 }
 
-function leaveAStepCallback(obj, context){
-  //alert("Leaving step" + context.fromStep + " to go to step " + context.toStep);
-  console.log(obj);
-  console.log(context);
-  if(context.fromStep < context.toStep)
+function leaveAStepCallback(obj, context) {
+
+  if (context.fromStep < context.toStep)
     return validateSteps(context.fromStep);
   else return true;
 }
 
-function onFinishCallback(objs, context){
-    alert('Thanks for participating')
+
+function onFinishCallback(objs, context) {
+  if(validateSteps(context.fromStep)){
+    alert('thanks!');
+
+    $.ajax({
+      type: "post",
+      data: JSON.stringify(jsonfile),
+      url: '/vote',
+      contentType : 'application/json',
+      dataType: "json" // response type
+    }).done(function(response){
+      console.log(response);
+    });
+  }
+
 }
+
 
 function validateSteps(stepNumber) {
   var isStepValid = true;
@@ -84,40 +97,64 @@ function validateSteps(stepNumber) {
   return runValidation(stepNumber);
 }
 
+var jsonfile;
+
 function runValidation(stepNumber) {
   var choice = false;
   var item = stepNumber - 1;
-  console.log(item);
-
+  var currentCategory;
+  var currentValue;
+  //var jobject;
   $.each($('.choices').eq(item).children('input[type="radio"]'), function(i, val) {
-    if($(val).prop('checked')){
-      console.log('can pass!');
+    if ($(val).prop('checked')) {
       choice = true;
       setError(stepNumber, false);
+      currentCategory = String($('.StepTitle').eq(item).text()).trim();
+      currentValue = $(val).val();
+      console.log('Item::' + item);
+      console.log(currentCategory);
+      console.log(currentValue);
+      //console.log(jsonfile);
+      if (jsonfile == undefined) {
+        //jsonfile.push({"user": "EdGuz", "selections": [{"currentCategory": currentCategory, "selection": currentValue}]});
+        jsonfile = {
+          "user": "EdGuz",
+          "selections": [{
+            "currentCategory": currentCategory,
+            "selection": currentValue
+          }]
+        };
+        console.log(jsonfile.selections);
+      } else if (jsonfile.selections[item] == undefined) {
+        jsonfile.selections.push({
+          "currentCategory": currentCategory,
+          "selection": currentValue
+        });
+      } else {
+        jsonfile.selections[item].currentCategory = currentCategory;
+        jsonfile.selections[item].selection = currentValue;
+      }
       return false
     } else {
       choice = false;
-
     }
   });
-
-  if(choice == false)
+  if (choice == false)
     setError(stepNumber, true);
-
-
+  console.log(JSON.stringify(jsonfile));
   return choice;
+
 }
 
-function setError(stepNumber, iserror){
+function setError(stepNumber, iserror) {
   console.log(stepNumber);
 
-  $('#wizard').smartWizard('setError',
-    {
-      stepnum:stepNumber,
-    iserror:iserror
- });
+  $('#wizard').smartWizard('setError', {
+    stepnum: stepNumber,
+    iserror: iserror
+  });
 
-  if(iserror == true){
+  if (iserror == true) {
     console.log('Is Error:: ' + iserror);
     alert('Yo man you gotta make a choice');
   }
