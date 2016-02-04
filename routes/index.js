@@ -20,17 +20,15 @@ router.post('/vote', function(req, res){
   var db = req.db;
   var collection = db.get('Choices');
   console.log(req.body.user);
-
-  var body = req.body;
-  console.log(body);
   var user = req.body.user;
+  console.log(req.body);
   //console.log(req.body);
 
   collection.update({"user":user}, {"selections": req.body.selections}, {upsert: true},
   function(err, result){
     res.send((err === null) ? { msg: result } : { msg: err })
   });
-  
+
 });
 
 module.exports = router;
