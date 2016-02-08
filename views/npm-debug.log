@@ -9,8 +9,8 @@
 6 silly lifecycle Oscars2016Node@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle Oscars2016Node@0.0.0~start: Oscars2016Node@0.0.0
 8 verbose lifecycle Oscars2016Node@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle Oscars2016Node@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/EdGuzmanMarte/projects/nodeProjects/Oscars2016Node/node_modules/.bin:/usr/local/lib/dnx/runtimes/dnx-coreclr-darwin-x64.1.0.0-rc1-final/bin:/Users/EdGuzmanMarte/.dnx/bin:/Users/EdGuzmanMarte/.rvm/gems/ruby-2.2.1/bin:/Users/EdGuzmanMarte/.rvm/gems/ruby-2.2.1@global/bin:/Users/EdGuzmanMarte/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/EdGuzmanMarte/.rvm/bin
-10 verbose lifecycle Oscars2016Node@0.0.0~start: CWD: /Users/EdGuzmanMarte/projects/nodeProjects/Oscars2016Node
+9 verbose lifecycle Oscars2016Node@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/EdGuzmanMarte/projects/nodeProjects/oscars2016Node/node_modules/.bin:/usr/local/lib/dnx/runtimes/dnx-coreclr-darwin-x64.1.0.0-rc1-final/bin:/Users/EdGuzmanMarte/.dnx/bin:/Users/EdGuzmanMarte/.rvm/gems/ruby-2.2.1/bin:/Users/EdGuzmanMarte/.rvm/gems/ruby-2.2.1@global/bin:/Users/EdGuzmanMarte/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/EdGuzmanMarte/.rvm/bin
+10 verbose lifecycle Oscars2016Node@0.0.0~start: CWD: /Users/EdGuzmanMarte/projects/nodeProjects/oscars2016Node
 11 silly lifecycle Oscars2016Node@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle Oscars2016Node@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle Oscars2016Node@0.0.0~start: Failed to exec start script
@@ -25,7 +25,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:821:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 15 verbose pkgid Oscars2016Node@0.0.0
-16 verbose cwd /Users/EdGuzmanMarte/projects/nodeProjects/Oscars2016Node/views
+16 verbose cwd /Users/EdGuzmanMarte/projects/nodeProjects/oscars2016Node/views
 17 error Darwin 15.3.0
 18 error argv "/usr/local/Cellar/node/5.4.1_1/bin/node" "/usr/local/bin/npm" "start"
 19 error node v5.4.1

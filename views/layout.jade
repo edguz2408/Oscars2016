@@ -3,9 +3,22 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/smart_wizard_vertical.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
   body
-    block content
-    
+    #cssmenu(style="margin-bottom:10px;")
+      ul
+        li.active
+          a(href="/home") Vote
+        li
+          a(href="/choices") Choices
+        li
+          a(href="#") Results
+        li
+          a(href="/logout") Log Out
     script(src="/javascripts/jquery-2.0.0.min.js")
+    block content
     script(src="/javascripts/jquery.smartWizard.js")
     script(src="/javascripts/global.js")
+    script(src="/javascripts/choices.js")
+    
