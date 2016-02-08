@@ -113,31 +113,8 @@ module.exports = function(passport) {
         })
       });
 
-    /*var db = req.db;
-    var collection = db.get('Choices');
-    console.log(req.body);
-    //console.log(req.body);
-
-    collection.update({
-        "user": req.body.user
-      }, {
-        "selections": req.body.selections
-      }, {
-        upsert: true
-      },
-      function(err, result) {
-        res.send((err === null) ? {
-          msg: result
-        } : {
-          msg: err
-        })
-      });*/
-
   });
-
-
-
-
+  
   return router;
 
 }
