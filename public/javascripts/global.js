@@ -1,3 +1,5 @@
+var jsonfile;
+
 $(document).ready(function() {
   // Initialize Smart Wizard with ajax content load
   //$('#wizard').smartWizard();
@@ -6,6 +8,21 @@ $(document).ready(function() {
 
 
 });
+
+function loadChoices(){
+  
+  $.getJSON('/choicesdata', function(response){
+    console.log(response);
+    jsonfile = response;
+    
+    $.each(response, function(i, val){
+      console.log(val);
+      $('.choices input').val();
+    });
+    
+  });
+  
+}
 
 function populateInfo() {
   $.getJSON('getData', function(response) {
@@ -96,7 +113,7 @@ function validateSteps(stepNumber) {
   return runValidation(stepNumber);
 }
 
-var jsonfile;
+
 
 function runValidation(stepNumber) {
   var choice = false;
