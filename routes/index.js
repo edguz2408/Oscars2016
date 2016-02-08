@@ -22,7 +22,7 @@ router.post('/vote', function(req, res){
   console.log(req.body);
   //console.log(req.body);
 
-  collection.update({"user":req.body.user}, {"selections": req.body.selections}, {upsert: true},
+  collection.update({"user":req.body.user}, {"user": req.body.user, "selections": req.body.selections}, {upsert: true},
   function(err, result){
     res.send((err === null) ? { msg: result } : { msg: err })
   });
