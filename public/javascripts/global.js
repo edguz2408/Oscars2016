@@ -6,21 +6,51 @@ $(document).ready(function() {
   console.log('Ready');
   populateInfo();
 
+  //setTimeout(
+  //	function() {loadChoices()}, 3000);
+
 
 });
 
 function loadChoices(){
-  
+  //if(jsonfile == undefined){
   $.getJSON('/choicesdata', function(response){
-    console.log(response);
-    jsonfile = response;
+	console.log(response[0].selections[0].selection);
+
+ 	jsonfile = response[0];
     
-    $.each(response, function(i, val){
-      console.log(val);
-      $('.choices input').val();
-    });
+    console.log(jsonfile);
+  //});
+  //}
+    //$.each(response[0].selections, function(i, val){
+//      console.log(val.selection);
+    // var choices  = $('.choices input');
+   //  console.log(response[0].selections);
     
+     //$.each(choices, function(index, value){
+	     $.each(jsonfile.selections, function(i, item){
+	     //consoonfilee.log(response[0].selections[i].selection);
+	     //	if($(value).val() == item.selection){
+		if($('input[value="' + item.selection + '"]').length > 0){
+		     $('input[value="' + item.selection + '"]').prop('checked', true);
+	             console.log(item.selection);	
+		     
+		     //input.prop('checked', true);
+		     //console.log(input);
+		     console.log(i);
+		    // return false;
+
+		}
+		  // $('.buttonNext').trigger('click')
+		// }, 1000);
+
+	    //	}                                       
+	});
   });
+     
+    //});
+    //clearInterval(interval);
+  //});
   
 }
 
@@ -53,7 +83,7 @@ function populateInfo() {
       $.each(value.Nominees, function(i, val) {
 
         if (value.Category_Type == 'Movie') {
-          divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '"  />' + val.Movie;
+          divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '" />' + val.Movie;
         } else if (value.Category_Type == 'Director') {
           divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category_Type + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
         } else {
@@ -73,8 +103,11 @@ function populateInfo() {
     $('#wizard').append(divs);
 
     $('#wizard').smartWizard({
+	    selected: 0,
+      enableAllSteps: true,		    
       onLeaveStep: leaveAStepCallback,
-      onFinish: onFinishCallback
+      onFinish: onFinishCallback,
+      onShowStep: loadChoices
 
     });
 
@@ -84,9 +117,9 @@ function populateInfo() {
 
 function leaveAStepCallback(obj, context) {
 
-  if (context.fromStep < context.toStep)
+//  if (context.fromStep < context.toStep)
     return validateSteps(context.fromStep);
-  else return true;
+  //else return true;
 }
 
 
@@ -126,11 +159,9 @@ function runValidation(stepNumber) {
       choice = true;
       setError(stepNumber, false);
       currentCategory = String($('.StepTitle').eq(item).text()).trim();
-      currentValue = $(val).val();
-      console.log('Item::' + item);
-      console.log(currentCategory);
-      console.log(currentValue);
-      //console.log(jsonfile);
+      currentValue = $(val).val();          
+      
+//      console.log(jsonfile);
       if (jsonfile == undefined) {
         //jsonfile.push({"user": "EdGuz", "selections": [{"currentCategory": currentCategory, "selection": currentValue}]});
         jsonfile = {
@@ -157,7 +188,7 @@ function runValidation(stepNumber) {
   });
   if (choice == false)
     setError(stepNumber, true);
-  console.log(JSON.stringify(jsonfile));
+ // console.log(JSON.stringify(jsonfile));
   return choice;
 
 }

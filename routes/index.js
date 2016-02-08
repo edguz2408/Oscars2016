@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var Choices = require('../models/Choices');
+var Choices = require('../models/choices');
 var Nominations = require('../models/Nominations')
 
 var GOOGLE_CLIENT_ID = "--insert-google-client-id-here--",
@@ -40,17 +40,12 @@ module.exports = function(passport) {
     });
   });
 
-<<<<<<< HEAD
-  collection.update({"user":req.body.user}, {"user": req.body.user, "selections": req.body.selections}, {upsert: true},
-  function(err, result){
-    res.send((err === null) ? { msg: result } : { msg: err })
-=======
+
   router.get('/home', isAuthenticated, function(req, res) {
     console.log(req.user);
     res.render('index', {
       user: req.user
     });
->>>>>>> b5b75b3d1cc2311dbd5fb92d43d085c648c4fc5b
   });
 
   router.get('/getData', function(req, res) {
@@ -76,6 +71,10 @@ module.exports = function(passport) {
       }
     });
   });
+
+/*  router.get('/choicesByCat/:name', isAuthenticated, function(req, res){
+      Choices.find({});
+  });*/
 
   router.get('/choices', isAuthenticated,  function(req, res){
     res.render('choices');
