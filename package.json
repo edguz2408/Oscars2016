@@ -12,7 +12,15 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "mongodb": "^1.4.40",
+    "mongoose" : "~3.8.12",
+    "monk": "latest",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "passport" : "~0.1.17",
+    "passport-local" :"latest",
+    "passport-google-oauth" : "~0.1.5",
+    "express-session" : "latest",
+    "bcrypt-nodejs": "latest",
+    "connect-flash" : "latest"
   }
 }

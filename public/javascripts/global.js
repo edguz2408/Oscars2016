@@ -75,7 +75,6 @@ function leaveAStepCallback(obj, context) {
 
 function onFinishCallback(objs, context) {
   if(validateSteps(context.fromStep)){
-    alert('thanks!');
 
     $.ajax({
       type: "post",
@@ -84,7 +83,7 @@ function onFinishCallback(objs, context) {
       contentType : 'application/json',
       dataType: "json" // response type
     }).done(function(response){
-      console.log(response);
+      window.location.href = '/choices';
     });
   }
 
@@ -118,7 +117,7 @@ function runValidation(stepNumber) {
       if (jsonfile == undefined) {
         //jsonfile.push({"user": "EdGuz", "selections": [{"currentCategory": currentCategory, "selection": currentValue}]});
         jsonfile = {
-          "user": "EdGuz",
+          //"user": "EdGuz",
           "selections": [{
             "currentCategory": currentCategory,
             "selection": currentValue
