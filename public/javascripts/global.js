@@ -4,65 +4,48 @@ $(document).ready(function() {
   // Initialize Smart Wizard with ajax content load
   //$('#wizard').smartWizard();
   console.log('Ready');
+  loadChoices();
   populateInfo();
 
-  //setTimeout(
-  //	function() {loadChoices()}, 3000);
-
-
 });
+var obj = {};
 
 function loadChoices(){
+
   //if(jsonfile == undefined){
   $.getJSON('/choicesdata', function(response){
 	console.log(response[0].selections[0].selection);
 
- 	jsonfile = response[0];
-    
+ 	  jsonfile = response[0];
+
     console.log(jsonfile);
-  //});
-  //}
-    //$.each(response[0].selections, function(i, val){
-//      console.log(val.selection);
-    // var choices  = $('.choices input');
-   //  console.log(response[0].selections);
-    
-     //$.each(choices, function(index, value){
-	     $.each(jsonfile.selections, function(i, item){
-	     //consoonfilee.log(response[0].selections[i].selection);
-	     //	if($(value).val() == item.selection){
-		if($('input[value="' + item.selection + '"]').length > 0){
-		     $('input[value="' + item.selection + '"]').prop('checked', true);
-	             console.log(item.selection);	
-		     
-		     //input.prop('checked', true);
-		     //console.log(input);
-		     console.log(i);
-		    // return false;
 
-		}
-		  // $('.buttonNext').trigger('click')
-		// }, 1000);
+    $.each(response[0].selections, function(i, val){
+      obj[val.currentCategory] = val.selection;
+    });
 
-	    //	}                                       
-	});
+    console.log(obj);
+
+
   });
-     
-    //});
-    //clearInterval(interval);
-  //});
-  
+  return obj;
+
 }
 
 function populateInfo() {
+
+  var selections = obj;
+  //console.log();
+
   $.getJSON('getData', function(response) {
 
     var lis = '';
     var divs = '';
     //var choices = '';
-    console.log(response[0]);
+    console.log(selections);
 
     $('#wizard').append('<ul id="categories"></ul>');
+    console.log(jsonfile);
 
     $.each(response[0].oscars2016, function(index, value) {
       console.log(value.Category);
@@ -82,18 +65,36 @@ function populateInfo() {
 
       $.each(value.Nominees, function(i, val) {
 
-        if (value.Category_Type == 'Movie') {
-          divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '" />' + val.Movie;
-        } else if (value.Category_Type == 'Director') {
-          divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category_Type + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
-        } else {
-          divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category_Type + '"  />' + val.Actor + ' &#x2012 ' + val.Movie;
-        }
+        //if(jsonfile == undefined){
 
-        divs += '</br>';
+          if (value.Category_Type == 'Movie') {
+            if(selections != undefined && selections[value.Category] == val.Movie){
+               divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '" checked/>' + val.Movie;
+            } else {
+                divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '" />' + val.Movie;
+            }
+
+          } else if (value.Category_Type == 'Director') {
+            if(selections != undefined && selections[value.Category] == val.Director){
+              divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category_Type + '"  checked/>' + val.Director + ' &#x2012 ' + val.Movie;
+            }else {
+                divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category_Type + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
+            }
+
+          } else if(value.Category_Type == 'Actor') {
+            console.log(selections[value.Category]);
+            if( selections != undefined && selections[value.Category] == val.Actor){
+                divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category + '"  checked/>' + val.Actor + ' &#x2012 ' + val.Movie;
+            } else {
+                divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category  + '" />' + val.Actor + ' &#x2012 ' + val.Movie;
+            }
+
+          }
+
+       divs += '</br>';
 
       });
-      divs += '<input type="radio" value="NA" name="' + value.Category_Type + '" /> N/A';
+      divs += '<input type="radio" value="NA" name="' + value.Category  + '" /> N/A';
       divs += '</div>';
       divs += '</div>';
       divs += '</div>';
@@ -101,13 +102,12 @@ function populateInfo() {
     });
     $('#categories').append(lis);
     $('#wizard').append(divs);
-
     $('#wizard').smartWizard({
 	    selected: 0,
-      enableAllSteps: true,		    
+      enableAllSteps: !$.isEmptyObject(selections),
       onLeaveStep: leaveAStepCallback,
       onFinish: onFinishCallback,
-      onShowStep: loadChoices
+      labelFinish:'Save'
 
     });
 
@@ -159,8 +159,8 @@ function runValidation(stepNumber) {
       choice = true;
       setError(stepNumber, false);
       currentCategory = String($('.StepTitle').eq(item).text()).trim();
-      currentValue = $(val).val();          
-      
+      currentValue = $(val).val();
+
 //      console.log(jsonfile);
       if (jsonfile == undefined) {
         //jsonfile.push({"user": "EdGuz", "selections": [{"currentCategory": currentCategory, "selection": currentValue}]});
@@ -188,7 +188,7 @@ function runValidation(stepNumber) {
   });
   if (choice == false)
     setError(stepNumber, true);
- // console.log(JSON.stringify(jsonfile));
+  console.log(JSON.stringify(jsonfile));
   return choice;
 
 }
