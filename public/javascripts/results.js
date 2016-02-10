@@ -109,7 +109,7 @@ function showWinners(){
                   
                   currentCategory = value.category;
                   currentUser = item.user;
-                  summary[item.user] = parseInt(value.amount / value.voters);
+                  //summary[item.user] = parseInt(value.amount / value.voters);
                   console.log(  summary[item.user]);
                   
                 } else {
@@ -120,7 +120,7 @@ function showWinners(){
                   tableContent += '</tr>';                       
                   total += parseInt(value.amount / value.voters);
                   summary[item.user] = total;
-                  
+                  console.log(total);
                   
                   //console.log(  summary[item.user]);
                   
