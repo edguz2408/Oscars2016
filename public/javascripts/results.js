@@ -112,12 +112,12 @@ function showWinners(){
            
           });
           
-          
+          tableContent += '</table></div></div>';
+          console.log(tableContent);
         });
       
       });
-      tableContent += '</table></div></div>';
-      console.log(tableContent);
+      
       
       $('#container').append(tableContent);
      
