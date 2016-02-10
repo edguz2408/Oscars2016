@@ -86,8 +86,8 @@ function showWinners(){
 		      	 if(value.winner ==  val.selection){
 			      	console.log(item.user + ' won!');
 				console.log(value.category);
-				tableContent += '<div style="float:left">';
-				tableContent += '<h2>' + value.category + '</h2>';
+				tableContent += '<div><h2>' + value.category + '</h2></div>';
+				tableContent += '<div>';
 				tableContent += '<table>';
 				tableContent += '<tr>';
 				tableContent += '<th> User </th>';
