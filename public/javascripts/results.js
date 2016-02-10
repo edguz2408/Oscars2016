@@ -107,19 +107,9 @@ function showWinners(){
                   total = parseInt(value.amount / value.voters);
                   summary[item.user] = total;
                   
-                  /*SummaryTable += '<div style="float:left; margin-left:15px;">';
-                  SummaryTable += '<h4>Summary</h4>';
-                  SummaryTable += '<table class="table table-hover table-bordered">';
-                  SummaryTable += '<tr>';
-                  SummaryTable += '<th>User</th>';
-                  SummaryTable += '<th>Total Won</th>';
-                  SummaryTable += '</tr>';
-                  SummaryTable += '<tr>';
-                  SummaryTable += '<td>' + item.user + '</td>';
-                  SummaryTable += '<td>' + total + '</td>';*/
-                  
                   currentCategory = value.category;
                   currentUser = item.user;
+                  console.log(  summary[item.user]);
                   
                 } else {
                   
@@ -130,14 +120,7 @@ function showWinners(){
                   total += parseInt(value.amount / value.voters);
                   summary[item.user] = total;
                   
-                  /*tableContent += SummaryTable;
-                  total += parseInt(value.amount / value.voters);
-                  tableContent += '<tr>';
-                  tableContent += '<td>' + item.user + '</td>';
-                  tableContent += '<td>' + total + '</td>';
-                  tableContent += '</tr>';
-                
-                  tableContent += '</table></div>';*/
+                  console.log(  summary[item.user]);
                   
                 }
                  
