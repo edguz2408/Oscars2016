@@ -86,7 +86,7 @@ function showWinners(){
                 if(value.category != currentCategory){
                   console.log(item.user + ' won!');
                   console.log(value.category);            
-                  tableContent += '<h4>' + value.category + '</h4>';      
+                  tableContent += '<div><h4>' + value.category + '</h4><div>';      
                   tableContent += '<div style="width:25px;">';                
                   tableContent += '<table class="table">';
                   tableContent += '<tr>';
