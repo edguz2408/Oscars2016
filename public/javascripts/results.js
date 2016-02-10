@@ -44,7 +44,7 @@ function updateAmount() {
 
       $.each(response, function(i, item) {
         $.each(item.selections, function(index, it) {
-          if (winners[it.currentCategory] == it.selection) {
+          if (winners[it.currentCategory] == it.category) {
             if (amounts[it.currentCategory] == undefined) {
               amounts[it.currentCategory] = 1;
             } else {
@@ -121,11 +121,10 @@ function showWinners(){
                   total += parseInt(value.amount / value.voters);
                   summary[item.user] = total;
                   console.log(total);
-                  
-                  //console.log(  summary[item.user]);
+                                  
                   
                 }
-                //summary[item.user] = total; 
+                
   
             }  
             
@@ -168,23 +167,6 @@ function showWinners(){
       
      
    });
-  
-   /*$.map(summary, function(n, i) {
-     SummaryTable += '<div>';
-     SummaryTable += '<table class="table">';
-     SummaryTable += '<tr>';
-     SummaryTable += '<th> User </th>';
-     SummaryTable += '<th> Total Won </th>';
-     SummaryTable += '</tr>';
-     SummaryTable += '<tr>';
-     SummaryTable += '<td>' + i + '</td>';
-     SummaryTable += '<td>' + n + '</td>';
-     SummaryTable += '</tr>';
-     SummaryTable += '</table>';
-     SummaryTable += '<div>';
-   });
-    
-   $('#summary').append(SummaryTable);*/
   
     
  });
