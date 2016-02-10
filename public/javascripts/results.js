@@ -72,6 +72,7 @@ function updateAmount() {
 function showWinners(){
   $.getJSON('/winnersinfo', function(response) {
     var tableContent = '';
+    var SummaryTable = '';
     var result = response;
     var currentCategory;
     var currentUser;
@@ -104,7 +105,19 @@ function showWinners(){
                   
                   currentCategory = value.category;
                   currentUser = item.user;
+                  
                   total = parseInt(value.amount / value.voters);
+                  SummaryTable += '<div style="float:left; margin-left:15px;">';
+                  SummaryTable += '<h4>Summary</h4>';
+                  SummaryTable += '<table class="table table-hover table-bordered">';
+                  SummaryTable += '<tr>';
+                  SummaryTable += '<td>User</td>';
+                  SummaryTable += '<td>Total Won</td>';
+                  SummaryTable += '</tr>';
+                  SummaryTable += '<tr>';
+                  SummaryTable += '<td>' + item.user + '</td>';
+                  SummaryTable += '<td>' + total + '</td>';
+                  
                 } else {
                   
                   tableContent += '<tr>';				
@@ -113,14 +126,8 @@ function showWinners(){
                   tableContent += '</tr>';     
                   tableContent += '</table></div></div>';
                   
+                  tableContent += SummaryTable;
                   total += parseInt(value.amount / value.voters);
-                  tableContent += '<div style="float:left; margin-left:15px;">';
-                  tableContent += '<h4>Summary</h4>';
-                  tableContent += '<table class="table table-hover table-bordered">';
-                  tableContent += '<tr>';
-                  tableContent += '<td>User</td>';
-                  tableContent += '<td>Total Won</td>';
-                  tableContent += '</tr>';
                   tableContent += '<tr>';
                   tableContent += '<td>' + item.user + '</td>';
                   tableContent += '<td>' + total + '</td>';
