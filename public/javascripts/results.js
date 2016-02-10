@@ -131,7 +131,7 @@ function showWinners(){
                   tableContent += '<tr>';
                   tableContent += '<td>' + item.user + '</td>';
                   tableContent += '<td>' + total + '</td>';
-                  tableContent += '</table></div>';
+                  //tableContent += '</table></div>';
                   
                 }
                  
@@ -142,7 +142,7 @@ function showWinners(){
           
           
         });
-        //tableContent += '</table></div></div>';
+        tableContent += '</table></table></div></div></div>';
         console.log(tableContent);
       
       });
