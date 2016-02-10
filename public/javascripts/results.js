@@ -135,6 +135,10 @@ function showWinners(){
                 SummaryTable += '<tr>';
                 SummaryTable += '<td>' + item.user + '</td>';
                 SummaryTable += '<td>' + total + '</td>';
+                
+                currentCategory = value.category;
+                currentUser = item.user;
+                
               } else {
                 total += parseInt(value.amount / value.voters);
                 SummaryTable += '<tr>';
