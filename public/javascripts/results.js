@@ -126,11 +126,11 @@ function showWinners(){
                   tableContent += '</tr>';     
                   tableContent += '</table></div></div>';
                   
-                  tableContent += SummaryTable;
+                  //tableContent += SummaryTable;
                   total += parseInt(value.amount / value.voters);
-                  tableContent += '<tr>';
-                  tableContent += '<td>' + item.user + '</td>';
-                  tableContent += '<td>' + total + '</td>';
+                  SummaryTable += '<tr>';
+                  SummaryTable += '<td>' + item.user + '</td>';
+                  SummaryTable += '<td>' + total + '</td>';
                   //tableContent += '</table></div>';
                   
                 }
@@ -142,13 +142,15 @@ function showWinners(){
           
           
         });
-        tableContent += '</table></table></div></div></div>';
+        SummaryTable += '</table></div>';
+        tableContent += '</table></div></div>';
         console.log(tableContent);
       
       });
       
       
       $('#container').append(tableContent);
+      $('#Summary').append(SummaryTable);
      
    });
     
