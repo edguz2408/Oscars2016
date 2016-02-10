@@ -123,8 +123,7 @@ function showWinners(){
                   tableContent += '<tr>';				
                   tableContent += '<td>' + item.user + '</td>';
                   tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
-                  tableContent += '</tr>';     
-                  tableContent += '</table></div></div>';
+                  tableContent += '</tr>';                       
                   
                   //tableContent += SummaryTable;
                   total += parseInt(value.amount / value.voters);
