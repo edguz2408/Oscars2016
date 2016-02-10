@@ -89,7 +89,7 @@ function showWinners(){
                   //tableContent += '<div><h4>' + value.category + '</h2></div>';
                   tableContent += '<div style="float:left; margin-left:15px;">';
                   tableContent += '<h4>' + value.category + '</h4>';
-                  tableContent += '<table class="table">';
+                  tableContent += '<table class="table table-hover table-bordered">';
                   tableContent += '<tr>';
                   tableContent += '<th> User </th>';
                   tableContent += '<th> Total </th>';
