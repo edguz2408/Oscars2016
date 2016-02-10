@@ -124,7 +124,7 @@ function showWinners(){
            
           });
           
-          if(value.winner ==  val.selection){
+          //if(value.winner ==  val.selection){
             if(value.category != currentCategory && item.user != currentUser){
               total = parseInt(value.amount / value.voters);
               SummaryTable += '<div style="float:left; margin-left:15px;">';
@@ -144,7 +144,7 @@ function showWinners(){
               SummaryTable += '<td>' + total + '</td>';
               SummaryTable += '</tr>';
             }
-          }
+          //}
           
         });
         SummaryTable += '</table></div>';
