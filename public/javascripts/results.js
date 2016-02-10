@@ -111,8 +111,8 @@ function showWinners(){
                   SummaryTable += '<h4>Summary</h4>';
                   SummaryTable += '<table class="table table-hover table-bordered">';
                   SummaryTable += '<tr>';
-                  SummaryTable += '<td>User</td>';
-                  SummaryTable += '<td>Total Won</td>';
+                  SummaryTable += '<th>User</th>';
+                  SummaryTable += '<th>Total Won</th>';
                   SummaryTable += '</tr>';
                   SummaryTable += '<tr>';
                   SummaryTable += '<td>' + item.user + '</td>';
@@ -130,6 +130,7 @@ function showWinners(){
                   SummaryTable += '<tr>';
                   SummaryTable += '<td>' + item.user + '</td>';
                   SummaryTable += '<td>' + total + '</td>';
+                  SummaryTable += '</tr>';
                   //tableContent += '</table></div>';
                   
                 }
