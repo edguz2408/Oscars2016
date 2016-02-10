@@ -81,14 +81,14 @@ module.exports = function(passport) {
         console.log(results);
         res.json(results);
       });*/
-      Choices.find({}, {"user":1, "selections":1}, {$sort:{"user": 1}}, function(err, results){
+      Choices.find({}, {"user":1, "selections":1}, function(err, results){
         console.log(results);
         res.json(results);
       })
   });
   router.get('/winnersinfo', isAuthenticated, function(req, res) {
 	//console.log(Winner);
-	Winner.find({}, {$sort:{"category": 1}}, function(err, winner) {
+	Winner.find({}, function(err, winner) {
       if (!err) {
         res.json(winner);
       } else {
