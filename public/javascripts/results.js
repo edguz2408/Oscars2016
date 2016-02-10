@@ -81,29 +81,31 @@ function showWinners(){
       $.each(result, function(index, value) {
         $.each(choices, function(i, item){
           $.each(item.selections, function(x, val) {
-            if(value.category != currentCategory){
+            
               if(value.winner ==  val.selection){
-                 console.log(item.user + ' won!');
-                 console.log(value.category);
-                 tableContent += '<div><h2>' + value.category + '</h2></div>';
-                 tableContent += '<div>';
-                 tableContent += '<table>';
-                 tableContent += '<tr>';
-                 tableContent += '<th> User </th>';
-                 tableContent += '<th> Total </th>';
-                 tableContent += '</tr>';
+                if(value.category != currentCategory){
+                  console.log(item.user + ' won!');
+                  console.log(value.category);
+                  tableContent += '<div><h2>' + value.category + '</h2></div>';
+                  tableContent += '<div>';
+                  tableContent += '<table>';
+                  tableContent += '<tr>';
+                  tableContent += '<th> User </th>';
+                  tableContent += '<th> Total </th>';
+                  tableContent += '</tr>';
+                  
+                  currentCategory = value.category;
+                } else {
+                  
+                  tableContent += '<tr>';				
+                  tableContent += '<td>' + item.user + '</td>';
+                  tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
+                  tableContent += '</tr>';     
+                }
                  
-                 currentCategory = value.category;
   
-               } 
-           } else {
-         
-             tableContent += '<tr>';				
-             tableContent += '<td>' + item.user + '</td>';
-             tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
-             tableContent += '</tr>';     
-       
-            }	
+            }  
+           
           });
           
         
