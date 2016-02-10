@@ -110,7 +110,8 @@ function showWinners(){
         });
       
       });
-      
+      console.log(tableContent);
+      $('#container').append(tableContent);
      
    });
     
