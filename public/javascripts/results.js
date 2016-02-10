@@ -88,7 +88,7 @@ function showWinners(){
                   console.log(value.category);
                   tableContent += '<div><h2>' + value.category + '</h2></div>';
                   tableContent += '<div>';
-                  tableContent += '<table>';
+                  tableContent += '<table class="table">';
                   tableContent += '<tr>';
                   tableContent += '<th> User </th>';
                   tableContent += '<th> Total </th>';
