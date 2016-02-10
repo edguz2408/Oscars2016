@@ -160,27 +160,31 @@ function showWinners(){
       
       
       $('#container').append(tableContent);
-      /*console.log(summary);
-      $.map(summary, function(n, i) {
-        SummaryTable += '<div>';
-        SummaryTable += '<table class="table">';
-        SummaryTable += '<tr>';
-        SummaryTable += '<th> User </th>';
-        SummaryTable += '<th> Total Won </th>';
-        SummaryTable += '</tr>';
+      console.log(summary);
+      
+      SummaryTable += '<div>';
+      SummaryTable += '<table class="table">';
+      SummaryTable += '<tr>';
+      SummaryTable += '<th> User </th>';
+      SummaryTable += '<th> Total Won </th>';
+      SummaryTable += '</tr>';
+      
+      $.map(summary, function(n, i) {      
         SummaryTable += '<tr>';
         SummaryTable += '<td>' + i + '</td>';
         SummaryTable += '<td>' + n + '</td>';
-        SummaryTable += '</tr>';
-        SummaryTable += '</table>';
-        SummaryTable += '<div>';
+        SummaryTable += '</tr>';      
       });
+      
+      SummaryTable += '</table>';
+      SummaryTable += '<div>';
        
-      $('#summary').append(SummaryTable);*/
+      $('#summary').append(SummaryTable);
+      
      
    });
   
-   $.map(summary, function(n, i) {
+   /*$.map(summary, function(n, i) {
      SummaryTable += '<div>';
      SummaryTable += '<table class="table">';
      SummaryTable += '<tr>';
@@ -195,7 +199,7 @@ function showWinners(){
      SummaryTable += '<div>';
    });
     
-   $('#summary').append(SummaryTable);
+   $('#summary').append(SummaryTable);*/
   
     
  });
