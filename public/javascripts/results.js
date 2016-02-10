@@ -78,31 +78,34 @@ function showWinners(){
     
     $.getJSON('/allchoices', function(choices){
 	    console.log(choices);
-      $.each(result, function(inde, value) {
+      $.each(result, function(index, value) {
         $.each(choices, function(i, item){
-          if(value.category != currentCategory){
-            if(value.winner ==  val.selection){
-               console.log(item.user + ' won!');
-               console.log(value.category);
-               tableContent += '<div><h2>' + value.category + '</h2></div>';
-               tableContent += '<div>';
-               tableContent += '<table>';
-               tableContent += '<tr>';
-               tableContent += '<th> User </th>';
-               tableContent += '<th> Total </th>';
-               tableContent += '</tr>';
-               
-               currentCategory = value.category;
-
-             } 
-         } else {
+          $.each(choces.selection, function(x, val) {
+            if(value.category != currentCategory){
+              if(value.winner ==  val.selection){
+                 console.log(item.user + ' won!');
+                 console.log(value.category);
+                 tableContent += '<div><h2>' + value.category + '</h2></div>';
+                 tableContent += '<div>';
+                 tableContent += '<table>';
+                 tableContent += '<tr>';
+                 tableContent += '<th> User </th>';
+                 tableContent += '<th> Total </th>';
+                 tableContent += '</tr>';
+                 
+                 currentCategory = value.category;
+  
+               } 
+           } else {
+         
+             tableContent += '<tr>';				
+             tableContent += '<td>' + item.user + '</td>';
+             tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
+             tableContent += '</tr>';     
        
-           tableContent += '<tr>';				
-           tableContent += '<td>' + item.user + '</td>';
-           tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
-           tableContent += '</tr>';     
-     
-          }	
+            }	
+          });
+          
         
         });
       
