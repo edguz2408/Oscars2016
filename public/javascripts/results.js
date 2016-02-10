@@ -66,15 +66,44 @@ function updateAmount() {
       });
     });
   });
-
+ showWinners();
 }
 
 function showWinners(){
   $.getJSON('/winnersinfo', function(response) {
     var tableContent = '';
     var result = response;
+    console.log(result);	
+    $.getJSON('/allchoices', function(choices){
+	    console.log(choices);
+      $.each(choices, function(i, item){
+	      //console.log(choices);
+	$.each(item.selections, function(x, val){
+		$.each(result, function(index, value){
+			console.log(val.selection);
+		      if(value.winner ==  val.selection){
+		      	console.log(item.user + ' won!');
+			console.log(value.category);
+			tableContent += '<div style="float:left">';
+			tableContent += '<h2>' + value.category + '</h2>';
+			tableContent += '<table>';
+			tableContent += '<tr>';
+			tableContent += '<th> User </th>';
+			tableContent += '<th> Total </th>';
+			tableContent += '</tr>';
+  			tableContent += '<tr>';				
+			tableContent += '<td>' + item.user + '</td>';
+			tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
+			tableContent += '</tr>';
+			tableContent += '</table>';
 
-    $.getJSON('/choices', function(response){
-      
+		      }	
+		});
+	});
+      });
+      console.log(tableContent);
+      $('#container').append(tableContent);
     });
+    
+ });
 }
