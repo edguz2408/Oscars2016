@@ -105,7 +105,7 @@ function showWinners(){
                   tableContent += '</tr>';    
                   
                   total = parseInt(value.amount / value.voters);
-                  Summary[item.user] = total;
+                  summary[item.user] = total;
                   
                   /*SummaryTable += '<div style="float:left; margin-left:15px;">';
                   SummaryTable += '<h4>Summary</h4>';
@@ -128,7 +128,7 @@ function showWinners(){
                   tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
                   tableContent += '</tr>';                       
                   total += parseInt(value.amount / value.voters);
-                  Summary[item.user] = total;
+                  summary[item.user] = total;
                   
                   /*tableContent += SummaryTable;
                   total += parseInt(value.amount / value.voters);
