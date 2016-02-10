@@ -195,7 +195,7 @@ function showWinners(){
      SummaryTable += '<div>';
    });
     
-   $('#summary').append(SummaryTable);*/
+   $('#summary').append(SummaryTable);
   
     
  });
