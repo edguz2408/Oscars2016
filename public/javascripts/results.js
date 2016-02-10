@@ -87,7 +87,7 @@ function showWinners(){
           $.each(item.selections, function(x, val) {
             
               if(value.winner ==  val.selection){
-                if(value.category != currentCategory ){
+                if(value.category != currentCategory && item.user != currentUser){
                   console.log(item.user + ' won!');
                   console.log(value.category);
                   //tableContent += '<div><h4>' + value.category + '</h2></div>';
@@ -104,23 +104,9 @@ function showWinners(){
                   tableContent += '</tr>';    
                   
                   currentCategory = value.category;
-                
+                  currentUser = item.user;
                   
-                } else {
-                  
-                  tableContent += '<tr>';				
-                  tableContent += '<td>' + item.user + '</td>';
-                  tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
-                  tableContent += '</tr>';                       
-                  
-                  //tableContent += SummaryTable;
-                
-                  //tableContent += '</table></div>';
-                  
-                }
-                
-                if(value.category != currentCategory && item.user != currentUser){
-                  
+                  total = parseInt(value.amount / value.voters);
                   SummaryTable += '<div style="float:left; margin-left:15px;">';
                   SummaryTable += '<h4>Summary</h4>';
                   SummaryTable += '<table class="table table-hover table-bordered">';
@@ -132,15 +118,21 @@ function showWinners(){
                   SummaryTable += '<td>' + item.user + '</td>';
                   SummaryTable += '<td>' + total + '</td>';
                   
-                  currentUser = item.user;
-                  total = parseInt(value.amount / value.voters);
-                  
                 } else {
+                  
+                  tableContent += '<tr>';				
+                  tableContent += '<td>' + item.user + '</td>';
+                  tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
+                  tableContent += '</tr>';                       
+                  
+                  //tableContent += SummaryTable;
                   total += parseInt(value.amount / value.voters);
                   SummaryTable += '<tr>';
                   SummaryTable += '<td>' + item.user + '</td>';
                   SummaryTable += '<td>' + total + '</td>';
                   SummaryTable += '</tr>';
+                  //tableContent += '</table></div>';
+                  
                 }
                  
   
