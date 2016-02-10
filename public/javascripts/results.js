@@ -85,9 +85,9 @@ function showWinners(){
               if(value.winner ==  val.selection){
                 if(value.category != currentCategory){
                   console.log(item.user + ' won!');
-                  console.log(value.category);            
-                  tableContent += '<div><h4>' + value.category + '</h4><div>';      
-                  tableContent += '<div style="width:25px;">';                
+                  console.log(value.category);
+                  tableContent += '<div><h4>' + value.category + '</h2></div>';
+                  tableContent += '<div style="width:25px;">';
                   tableContent += '<table class="table">';
                   tableContent += '<tr>';
                   tableContent += '<th> User </th>';
@@ -112,11 +112,10 @@ function showWinners(){
            
           });
           
-        
+          tableContent += '</table></div></div>';
         });
       
       });
-      tableContent += '</table></div></div>';
       console.log(tableContent);
       
       $('#container').append(tableContent);
