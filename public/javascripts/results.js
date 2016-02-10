@@ -73,6 +73,7 @@ function showWinners(){
   $.getJSON('/winnersinfo', function(response) {
     var tableContent = '';
     var result = response;
+    var currentCategory;
     console.log(result);	
     $.getJSON('/allchoices', function(choices){
 	    console.log(choices);
@@ -81,24 +82,33 @@ function showWinners(){
 	$.each(item.selections, function(x, val){
 		$.each(result, function(index, value){
 			console.log(val.selection);
-		      if(value.winner ==  val.selection){
-		      	console.log(item.user + ' won!');
-			console.log(value.category);
-			tableContent += '<div style="float:left">';
-			tableContent += '<h2>' + value.category + '</h2>';
-			tableContent += '<table>';
-			tableContent += '<tr>';
-			tableContent += '<th> User </th>';
-			tableContent += '<th> Total </th>';
-			tableContent += '</tr>';
-  			tableContent += '<tr>';				
-			tableContent += '<td>' + item.user + '</td>';
-			tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
-			tableContent += '</tr>';
-			tableContent += '</table>';
-
-		      }	
+		      if(value.category != currentCategory){
+		      	 if(value.winner ==  val.selection){
+			      	console.log(item.user + ' won!');
+				console.log(value.category);
+				tableContent += '<div style="float:left">';
+				tableContent += '<h2>' + value.category + '</h2>';
+				tableContent += '<table>';
+				tableContent += '<tr>';
+				tableContent += '<th> User </th>';
+				tableContent += '<th> Total </th>';
+				tableContent += '</tr>';
+				
+				currentCategory = value.category;
+	
+			  } 
+		      } else {
+			  	
+	  			tableContent += '<tr>';				
+				tableContent += '<td>' + item.user + '</td>';
+				tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
+				tableContent += '</tr>';
+				
+				
+			}	
+		     
 		});
+		tableContent + '</table></div>';
 	});
       });
       console.log(tableContent);
