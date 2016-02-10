@@ -161,27 +161,27 @@ function showWinners(){
       
       $('#container').append(tableContent);
       console.log(summary);
-      
+      $.map(summary, function(n, i) {
+        SummaryTable += '<div>';
+        SummaryTable += '<table class="table">';
+        SummaryTable += '<tr>';
+        SummaryTable += '<th> User </th>';
+        SummaryTable += '<th> Total Won </th>';
+        SummaryTable += '</tr>';
+        SummaryTable += '<tr>';
+        SummaryTable += '<td>' + i + '</td>';
+        SummaryTable += '<td>' + n + '</td>';
+        SummaryTable += '</tr>';
+        SummaryTable += '</table>';
+        SummaryTable += '<div>';
+      });
+       
+      $('#summary').append(SummaryTable);
      
    });
-   console.log(summary);
+  
    
-   $.map(summary, function(n, i) {
-     SummaryTable += '<div>';
-     SummaryTable += '<table class="table">';
-     SummaryTable += '<tr>';
-     SummaryTable += '<th> User </th>';
-     SummaryTable += '<th> Total Won </th>';
-     SummaryTable += '</tr>';
-     SummaryTable += '<tr>';
-     SummaryTable += '<td>' + i + '</td>';
-     SummaryTable += '<td>' + n + '</td>';
-     SummaryTable += '</tr>';
-     SummaryTable += '</table>';
-     SummaryTable += '<div>';
-   });
-    
-   $('#summary').append(SummaryTable);
+  
     
  });
 }
