@@ -143,6 +143,7 @@ function showWinners(){
         });
         SummaryTable += '</table></div>';
         tableContent += '</table></div></div>';
+        console.log(SummaryTable);
         console.log(tableContent);
       
       });
