@@ -104,7 +104,7 @@ function showWinners(){
                   tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
                   tableContent += '</tr>';    
                   
-                  //total = parseInt(value.amount / value.voters);
+                  total = parseInt(value.amount / value.voters);
                   //summary[item.user] = total;
                   
                   currentCategory = value.category;
