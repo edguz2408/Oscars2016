@@ -80,7 +80,7 @@ function showWinners(){
 	    console.log(choices);
       $.each(result, function(index, value) {
         $.each(choices, function(i, item){
-          $.each(choices.selection, function(x, val) {
+          $.each(choices.selections, function(x, val) {
             if(value.category != currentCategory){
               if(value.winner ==  val.selection){
                  console.log(item.user + ' won!');
