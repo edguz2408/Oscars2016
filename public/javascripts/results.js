@@ -93,6 +93,10 @@ function showWinners(){
                   tableContent += '<th> User </th>';
                   tableContent += '<th> Total </th>';
                   tableContent += '</tr>';
+                  tableContent += '<tr>';				
+                  tableContent += '<td>' + item.user + '</td>';
+                  tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
+                  tableContent += '</tr>';    
                   
                   currentCategory = value.category;
                 } else {
@@ -108,11 +112,12 @@ function showWinners(){
            
           });
           
-        
+          tableContent += '</table></div>';
         });
       
       });
       console.log(tableContent);
+      
       $('#container').append(tableContent);
      
    });
