@@ -74,6 +74,9 @@ function showWinners(){
     var tableContent = '';
     var result = response;
     var currentCategory;
+    var currentUser;
+    var total;
+    
     console.log(result);	
     
     $.getJSON('/allchoices', function(choices){
@@ -83,7 +86,7 @@ function showWinners(){
           $.each(item.selections, function(x, val) {
             
               if(value.winner ==  val.selection){
-                if(value.category != currentCategory){
+                if(value.category != currentCategory && item.user != currentUser){
                   console.log(item.user + ' won!');
                   console.log(value.category);
                   //tableContent += '<div><h4>' + value.category + '</h2></div>';
@@ -100,12 +103,29 @@ function showWinners(){
                   tableContent += '</tr>';    
                   
                   currentCategory = value.category;
+                  currentUser = item.user;
+                  total = parseInt(value.amount / value.voters);
                 } else {
                   
                   tableContent += '<tr>';				
                   tableContent += '<td>' + item.user + '</td>';
                   tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
                   tableContent += '</tr>';     
+                  tableContent += '</table></div></div>';
+                  
+                  total += parseInt(value.amount / value.voters);
+                  tableContent += '<div style="float:left; margin-left:15px;">';
+                  tableContent += '<h4>Summary</h4>';
+                  tableContent += '<table class="table table-hover table-bordered">';
+                  tableContent += '<tr>';
+                  tableContent += '<td>User</td>';
+                  tableContent += '<td>Total Won</td>';
+                  tableContent += '</tr>';
+                  tableContent += '<tr>';
+                  tableContent += '<td>' + item.user + '</td>';
+                  tableContent += '<td>' + total + '</td>';
+                  tableContent += '</table></div>';
+                  
                 }
                  
   
@@ -115,7 +135,7 @@ function showWinners(){
           
           
         });
-        tableContent += '</table></div></div>';
+        //tableContent += '</table></div></div>';
         console.log(tableContent);
       
       });
