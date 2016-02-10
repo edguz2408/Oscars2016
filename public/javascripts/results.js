@@ -119,7 +119,8 @@ function showWinners(){
                   
                 }
                 
-                if(item.user != currentUser){
+                if(value.category != currentCategory && item.user != currentUser){
+                  
                   SummaryTable += '<div style="float:left; margin-left:15px;">';
                   SummaryTable += '<h4>Summary</h4>';
                   SummaryTable += '<table class="table table-hover table-bordered">';
