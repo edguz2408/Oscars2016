@@ -106,18 +106,6 @@ function showWinners(){
                   currentCategory = value.category;
                   currentUser = item.user;
                   
-                  total = parseInt(value.amount / value.voters);
-                  SummaryTable += '<div style="float:left; margin-left:15px;">';
-                  SummaryTable += '<h4>Summary</h4>';
-                  SummaryTable += '<table class="table table-hover table-bordered">';
-                  SummaryTable += '<tr>';
-                  SummaryTable += '<th>User</th>';
-                  SummaryTable += '<th>Total Won</th>';
-                  SummaryTable += '</tr>';
-                  SummaryTable += '<tr>';
-                  SummaryTable += '<td>' + item.user + '</td>';
-                  SummaryTable += '<td>' + total + '</td>';
-                  
                 } else {
                   
                   tableContent += '<tr>';				
@@ -126,11 +114,7 @@ function showWinners(){
                   tableContent += '</tr>';                       
                   
                   //tableContent += SummaryTable;
-                  total += parseInt(value.amount / value.voters);
-                  SummaryTable += '<tr>';
-                  SummaryTable += '<td>' + item.user + '</td>';
-                  SummaryTable += '<td>' + total + '</td>';
-                  SummaryTable += '</tr>';
+                
                   //tableContent += '</table></div>';
                   
                 }
@@ -140,6 +124,27 @@ function showWinners(){
            
           });
           
+          if(value.winner ==  val.selection){
+            if(value.category != currentCategory && item.user != currentUser){
+              total = parseInt(value.amount / value.voters);
+              SummaryTable += '<div style="float:left; margin-left:15px;">';
+              SummaryTable += '<h4>Summary</h4>';
+              SummaryTable += '<table class="table table-hover table-bordered">';
+              SummaryTable += '<tr>';
+              SummaryTable += '<th>User</th>';
+              SummaryTable += '<th>Total Won</th>';
+              SummaryTable += '</tr>';
+              SummaryTable += '<tr>';
+              SummaryTable += '<td>' + item.user + '</td>';
+              SummaryTable += '<td>' + total + '</td>';
+            } else {
+              total += parseInt(value.amount / value.voters);
+              SummaryTable += '<tr>';
+              SummaryTable += '<td>' + item.user + '</td>';
+              SummaryTable += '<td>' + total + '</td>';
+              SummaryTable += '</tr>';
+            }
+          }
           
         });
         SummaryTable += '</table></div>';
