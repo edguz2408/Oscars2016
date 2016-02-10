@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var Choices = require('../models/choices');
-var Nominations = require('../models/Nominations')
+var Nominations = require('../models/Nominations');
+var Winner = require('../models/winner');
 
 var GOOGLE_CLIENT_ID = "--insert-google-client-id-here--",
   GOOGLE_CLIENT_SECRET = "--insert-google-client-secret-here--";
@@ -62,8 +63,10 @@ module.exports = function(passport) {
   });
 
   router.get('/choicesdata', isAuthenticated, function(req, res) {
-    Choices.find({"user":req.user.user}, function(err, choices){
-      if(!err){
+    Choices.find({
+      "user": req.user.user
+    }, function(err, choices) {
+      if (!err) {
         console.log(choices);
         res.json(choices);
       } else {
@@ -72,11 +75,56 @@ module.exports = function(passport) {
     });
   });
 
-/*  router.get('/choicesByCat/:name', isAuthenticated, function(req, res){
-      Choices.find({});
-  });*/
+  router.get('/allchoices', isAuthenticated, function(req, res) {
+    /*Choices.find({}).select({"selections":1}).exec(
+      function(err,results ){
+        console.log(results);
+        res.json(results);
+      });*/
+      Choices.find({}, {"selections":1}, function(err, results){
+        console.log(results);
+        res.json(results);
+      })
+  });
+  router.get('/winnersinfo', isAuthenticated, function(req, res) {
+    Winner.find({}, function(err, winner) {
+      if (!err) {
+        res.json(winner);
+      } else {
+        console.log(err);
+      }
+    });
+  });
 
-  router.get('/choices', isAuthenticated,  function(req, res){
+  router.get('/results', isAuthenticated, function(req, res) {
+    res.render('results', {
+      message: "Welcome"
+    });
+  });
+
+  router.put('/updateamount/:params', isAuthenticated, function(req, res) {
+    var paramvalues = String(req.params.params).split(',');
+    Winner.update({
+        "category": paramvalues[0]
+      }, {
+        $set: {
+          "amount": paramvalues[1],
+          "voters": paramvalues[2],
+        }
+      }, {
+        upsert: true
+      },
+      function(err, winner) {
+        console.log(winner);
+        res.send((err === null) ? {
+          msg: winner
+        } : {
+          msg: err
+        })
+      });
+  });
+
+  router.get('/choices', isAuthenticated, function(req, res) {
     res.render('choices');
   });
 
