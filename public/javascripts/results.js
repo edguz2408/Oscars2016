@@ -37,14 +37,14 @@ function updateAmount() {
 
   $.getJSON('/winnersinfo', function(response) {
     $.each(response, function(i, item) {
-      winners[item.category] = item.winner;
+      winners[item.category] = item.category;
     });
     console.log(winners);
     $.getJSON('/allchoices', function(response) {
 
       $.each(response, function(i, item) {
         $.each(item.selections, function(index, it) {
-          if (winners[it.currentCategory] == it.category) {
+          if (winners[it.currentCategory] == it.currentCategory) {
             if (amounts[it.currentCategory] == undefined) {
               amounts[it.currentCategory] = 1;
             } else {
