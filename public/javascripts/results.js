@@ -160,8 +160,7 @@ function showWinners(){
       
       
       $('#container').append(tableContent);
-      //$('#summary').append(SummaryTable);
-      
+      console.log(summary);
       
      
    });
