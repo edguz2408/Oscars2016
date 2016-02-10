@@ -96,7 +96,7 @@ function showWinners(){
                   tableContent += '</tr>';
                   tableContent += '<tr>';				
                   tableContent += '<td>' + item.user + '</td>';
-                  tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
+                  tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
                   tableContent += '</tr>';    
                   
                   currentCategory = value.category;
@@ -104,7 +104,7 @@ function showWinners(){
                   
                   tableContent += '<tr>';				
                   tableContent += '<td>' + item.user + '</td>';
-                  tableContent += '<td>' + parseInt(value.amount / value.voters) + '</td>';
+                  tableContent += '<td>$' + parseInt(value.amount / value.voters) + '</td>';
                   tableContent += '</tr>';     
                 }
                  
