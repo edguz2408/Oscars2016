@@ -117,6 +117,20 @@ module.exports = function(passport) {
     });
   });
 
+  router.post('/addResults', isAuthenticated, function(req, res){
+  	var result = new Winner();
+	result.category = req.body.category;
+	result.winner = req.body.winner;
+	result.price = req.body.price;
+
+	result.save(function(err, response){
+		if(!err)
+		 res.end();
+	        else 
+		 res.end({msg : err});
+	});
+  });
+
   router.put('/updateamount/:params', isAuthenticated, function(req, res) {
     var paramvalues = String(req.params.params).split(',');
     Winner.update({

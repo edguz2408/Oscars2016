@@ -4,11 +4,21 @@ block content
   hr
   #container
     form(action="/addResults", method="POST")
+      
       label(for="categories") categories
-      select#categories
+      select#categories(name="category")
       
       label(for="winner") Winner
-      select#winner 
+      select#winner(name="winner") 
+     
+
+      label(for="price") Price
+      select#price(name="price")
+       option 100
+       option 200
+       option 300
+       option 400
+       option 500
       
       input(type="submit", value="Save")
       
