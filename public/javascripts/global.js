@@ -47,7 +47,7 @@ function populateInfo() {
     $('#wizard').append('<ul id="categories"></ul>');
     console.log(jsonfile);
 
-    $.each(response[0].oscars2016, function(index, value) {
+    $.each(response, function(index, value) {
       console.log(value.Category);
       //console.log(value.Category);
 

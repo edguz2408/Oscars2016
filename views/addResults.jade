@@ -1,0 +1,15 @@
+extends layout
+block content
+  h3 Add Results
+  hr
+  #container
+    form(action="/addResults", method="POST")
+      label(for="categories") categories
+      select#categories
+      
+      label(for="winner") Winner
+      select#winner 
+      
+      input(type="submit", value="Save")
+      
+      script(src="/javascripts/addResults.js")

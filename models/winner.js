@@ -5,5 +5,6 @@ module.exports = mongoose.model('winner', {
   "winner": String,
   "price": Number,
   "amount": Number,
-  "voters": Number
+  "voters": Number,
+  "winners" : Number
 });

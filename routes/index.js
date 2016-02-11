@@ -62,6 +62,14 @@ module.exports = function(passport) {
 
   });
 
+  router.get('/getDateByName/:category', function(req, res){
+    Nominations.findOne({"Category": req.params.category}, {"Nominees": 1, "Category_Type": 1},
+    function(err, nominations){
+      if(!err)
+         res.json(nominations)
+    });
+  });
+
   router.get('/choicesdata', isAuthenticated, function(req, res) {
     Choices.find({
       "user": req.user.user
@@ -103,6 +111,12 @@ module.exports = function(passport) {
     });
   });
 
+  router.get('/addResults', isAuthenticated, function(req, res){
+    res.render('addResults', {
+      message: "Welcome"
+    });
+  });
+
   router.put('/updateamount/:params', isAuthenticated, function(req, res) {
     var paramvalues = String(req.params.params).split(',');
     Winner.update({
@@ -111,6 +125,7 @@ module.exports = function(passport) {
         $set: {
           "amount": paramvalues[1],
           "voters": paramvalues[2],
+          "winners": paramvalues[3]
         }
       }, {
         upsert: true
