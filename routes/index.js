@@ -62,12 +62,17 @@ module.exports = function(passport) {
 
   });
 
-  router.get('/getDateByName/:category', function(req, res){
-    Nominations.findOne({"Category": req.params.category}, {"Nominees": 1, "Category_Type": 1},
-    function(err, nominations){
-      if(!err)
-         res.json(nominations)
-    });
+  router.get('/getDateByName/:category', function(req, res) {
+    Nominations.findOne({
+        "Category": req.params.category
+      }, {
+        "Nominees": 1,
+        "Category_Type": 1
+      },
+      function(err, nominations) {
+        if (!err)
+          res.json(nominations)
+      });
   });
 
   router.get('/choicesdata', isAuthenticated, function(req, res) {
@@ -89,14 +94,17 @@ module.exports = function(passport) {
         console.log(results);
         res.json(results);
       });*/
-      Choices.find({}, {"user":1, "selections":1}, function(err, results){
-        console.log(results);
-        res.json(results);
-      })
+    Choices.find({}, {
+      "user": 1,
+      "selections": 1
+    }, function(err, results) {
+      console.log(results);
+      res.json(results);
+    })
   });
   router.get('/winnersinfo', isAuthenticated, function(req, res) {
-	//console.log(Winner);
-	Winner.find({}, function(err, winner) {
+    //console.log(Winner);
+    Winner.find({}, function(err, winner) {
       if (!err) {
         res.json(winner);
       } else {
@@ -111,7 +119,7 @@ module.exports = function(passport) {
     });
   });
 
-  router.get('/addResults', isAuthenticated, function(req, res){
+  router.get('/addResults', isAuthenticated, function(req, res) {
     res.render('addResults', {
       message: "Welcome"
     });
