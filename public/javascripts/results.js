@@ -9,15 +9,33 @@ function getWinners() {
   $.getJSON('/winnersinfo', function(response) {
     console.log(response);
     var tableContent = '';
+    var amount;
+    var voters;
+    var winners;
 
     $.each(response, function(i, item) {
+      if (item.amount != undefined)
+        amount = item.amount;
+      else
+        amount = '0';
+
+      if (item.voters != undefined)
+        voters = item.voters
+      else
+        voters = '0';
+
+      if (item.winners != undefined)
+        winners = item.winners;
+      else
+        winners = '0';
+
       tableContent += '<tr>';
       tableContent += '<td>' + item.category + '</td>';
       tableContent += '<td>' + item.winner + '</td>';
-      tableContent += '<td>' + item.price + '</td>';
-      tableContent += '<td>' + item.amount + '</td>';
-      tableContent += '<td>' + item.voters + '</td>';
-      tableContent += '<td>' + item.winners + '</td>';
+      tableContent += '<td>$' + item.price + '</td>';
+      tableContent += '<td>$' + amount + '</td>';
+      tableContent += '<td>' + voters + '</td>';
+      tableContent += '<td>' + winners + '</td>';
       tableContent += '</tr>';
     });
 
@@ -54,8 +72,8 @@ function updateAmount() {
             }
           }
 
-          if(winners[it.currentCategory] == it.selection){
-            if(winnersAmount[it.currentCategory] == undefined){
+          if (winners[it.currentCategory] == it.selection) {
+            if (winnersAmount[it.currentCategory] == undefined) {
               winnersAmount[it.currentCategory] = 1;
             } else {
               winnersAmount[it.currentCategory] += 1;
@@ -77,8 +95,13 @@ function updateAmount() {
       });
     });
   });
-  getWinners();
-  showWinners();
+
+  setTimeout(function() {
+    getWinners();
+    showWinners();
+    $('.modal-content').hide();
+  }, 3000);
+
 }
 
 function showWinners() {
@@ -99,22 +122,23 @@ function showWinners() {
         $.each(choices, function(i, item) {
           $.each(item.selections, function(x, val) {
 
-            if (value.winner == val.selection ) {
+            if (value.winner == val.selection) {
               currentUser = item.user;
               console.log(item.user + ' won!');
               console.log(value.category);
               if (value.category != currentCategory) {
 
-                tableContent += '<div style="float:left; margin-left:15px;">';
-                tableContent += '<h4>' + value.category + '</h4>';
+                //tableContent += '<div style="float:left; margin-left:15px;">';
+                tableContent += '<div>';
+                tableContent += '<h5>' + value.category + '</h5>';
                 tableContent += '<table class="table table-hover table-bordered">';
                 tableContent += '<tr>';
                 tableContent += '<th> User </th>';
                 tableContent += '<th> Total </th>';
                 tableContent += '</tr>';
                 tableContent += '<tr>';
-                tableContent += '<td>' + item.user + '</td>';
-                tableContent += '<td>$' + parseInt(value.amount / value.winners) + '</td>';
+                tableContent += '<td style="width:200px">' + item.user + '</td>';
+                tableContent += '<td style="width:200px">$' + parseInt(value.amount / value.winners) + '</td>';
                 tableContent += '</tr>';
 
                 total = parseInt(value.amount / value.winners);
@@ -134,7 +158,7 @@ function showWinners() {
 
               }
 
-              if(summary[item.user] == undefined){
+              if (summary[item.user] == undefined) {
                 summary[item.user] = parseInt(value.amount / value.winners);
               } else {
                 summary[item.user] += parseInt(value.amount / value.winners);
@@ -154,6 +178,8 @@ function showWinners() {
       $('#container').append(tableContent);
       console.log(summary);
       SummaryTable += '<div>';
+      SummaryTable += '<h3> Summary </h3>';
+      SummaryTable += '<hr/>';
       SummaryTable += '<table class="table table-hover table-bordered">';
       SummaryTable += '<tr>';
       SummaryTable += '<th> User </th>';
@@ -162,8 +188,8 @@ function showWinners() {
 
       $.map(summary, function(n, i) {
         SummaryTable += '<tr>';
-        SummaryTable += '<td>' + i + '</td>';
-        SummaryTable += '<td>$' + n + '</td>';
+        SummaryTable += '<td style="width:200px">' + i + '</td>';
+        SummaryTable += '<td style="width:200px">$' + n + '</td>';
         SummaryTable += '</tr>';
       });
 

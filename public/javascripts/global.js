@@ -69,16 +69,16 @@ function populateInfo() {
 
           if (value.Category_Type == 'Movie') {
             if(selections != undefined && selections[value.Category] == val.Movie){
-               divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '" checked/>' + val.Movie;
+               divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category + '" checked/>' + val.Movie;
             } else {
-                divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category_Type + '" />' + val.Movie;
+                divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category + '" />' + val.Movie;
             }
 
           } else if (value.Category_Type == 'Director') {
             if(selections != undefined && selections[value.Category] == val.Director){
-              divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category_Type + '"  checked/>' + val.Director + ' &#x2012 ' + val.Movie;
+              divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category + '"  checked/>' + val.Director + ' &#x2012 ' + val.Movie;
             }else {
-                divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category_Type + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
+                divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
             }
 
           } else if(value.Category_Type == 'Actor') {
@@ -94,6 +94,7 @@ function populateInfo() {
        divs += '</br>';
 
       });
+
       divs += '<input type="radio" value="NA" name="' + value.Category  + '" /> N/A';
       divs += '</div>';
       divs += '</div>';

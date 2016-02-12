@@ -2,14 +2,15 @@ extends layout
 block content
   h3 Add Results
   hr
-  #container
+  #container(style="margin-bottom:60px;")
     form(action="/addResults", method="POST")
       
       label(for="categories") categories
       select#categories(name="category")
       
       label(for="winner") Winner
-      select#winner(name="winner") 
+      select#winner(name="winner")
+        option --Select Item--
      
 
       label(for="price") Price
@@ -22,4 +23,14 @@ block content
       
       input(type="submit", value="Save")
       
-      script(src="/javascripts/addResults.js")
+  #winners
+    table.table.table-hover.table-bordered
+      thead
+        th Category
+        th Winner
+        th Price
+        th Amount Invested
+        th Voters
+        th Winners
+      tbody
+  script(src="/javascripts/addResults.js")

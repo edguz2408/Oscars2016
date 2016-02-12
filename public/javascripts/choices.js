@@ -14,7 +14,7 @@ function getChoices(){
         tableContent += '</tr>';
       });
     } else {
-      $('body').append('<h1 style="text-align:center;"> Yo man you haven\'t made any choices yet </h1>');
+      $('#errorContent').append('<h1 style="text-align:center;"> Yo man you haven\'t made any choices yet </h1>');
     }
 
 

@@ -133,6 +133,51 @@
             }
          ],
          "Category_Type":"Director"
+      },
+      {
+         "Category":"ACTRESS IN A SUPPORTING ROLE",
+         "Nominees":[
+            {
+               "Actor":"Jennifer Jason Leigh",
+               "Movie":"The Hateful Eight"
+            },
+            {
+               "Actor":"Rooney Mara",
+               "Movie":"Spotlight"
+            },
+            {
+               "Actor":"Alicia Vikander",
+               "Movie":"The Danish Girl"
+            },
+            {
+               "Actor":"Kate Winslet",
+               "Movie":"Steve Jobs"
+            }
+         ],
+         "Category_Type":"Actor"
+      },
+      {
+         "Category":"ANIMATED FEATURE FILM",
+         "Nominees":[
+            {
+               "Movie":"Anomalisa"
+            },
+            {
+
+               "Movie":"Boy and the World"
+            },
+            {
+
+               "Movie":"Inside Out"
+            },
+            {
+               "Movie":"Shaun the Sheep Movie"
+            },
+            {
+              "Movie" : "When Marnie Was There"
+            }
+         ],
+         "Category_Type":"Movie"
       }
    ]
 }

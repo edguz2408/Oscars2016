@@ -77,7 +77,7 @@ module.exports = function(passport) {
 
   router.get('/choicesdata', isAuthenticated, function(req, res) {
     Choices.find({
-      "user": req.user.user
+      "user": req.user.firstname + ' ' + req.user.lastname
     }, function(err, choices) {
       if (!err) {
         console.log(choices);
@@ -133,8 +133,8 @@ module.exports = function(passport) {
 
 	result.save(function(err, response){
 		if(!err)
-		 res.end();
-	        else 
+		 res.redirect('addResults');
+	        else
 		 res.end({msg : err});
 	});
   });
@@ -181,7 +181,7 @@ module.exports = function(passport) {
   router.post('/vote', function(req, res) {
     console.log(req.user);
     Choices.update({
-        "user": req.user.user
+        "user": req.user.firstname + ' ' + req.user.lastname
       }, {
         $set: {
           "selections": req.body.selections
