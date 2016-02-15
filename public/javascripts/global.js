@@ -5,22 +5,30 @@ $(document).ready(function() {
   //$('#wizard').smartWizard();
   console.log('Ready');
   loadChoices();
-  populateInfo();
+
+  $('.modal-content').show();
+  setTimeout(function() {
+    $('.modal-content').hide();
+    populateInfo();
+  }, 3000);
+
 
 });
 var obj = {};
 
-function loadChoices(){
+function loadChoices() {
 
   //if(jsonfile == undefined){
-  $.getJSON('/choicesdata', function(response){
-	console.log(response[0].selections[0].selection);
+  $.getJSON('/choicesdata', function(response) {
 
- 	  jsonfile = response[0];
+
+    console.log(response[0].selections[0].selection);
+    jsonfile = response[0];
+
 
     console.log(jsonfile);
 
-    $.each(response[0].selections, function(i, val){
+    $.each(response[0].selections, function(i, val) {
       obj[val.currentCategory] = val.selection;
     });
 
@@ -36,13 +44,17 @@ function populateInfo() {
 
   var selections = obj;
   //console.log();
-
+  console.log('here');
+  $('#wizard')
+  .append('<h1 id="message" style="text-align:center;"> Vote is not available </h1>');
   $.getJSON('getData', function(response) {
 
+    $('#message').hide();
     var lis = '';
     var divs = '';
     //var choices = '';
     console.log(selections);
+    $('#message').hide();
 
     $('#wizard').append('<ul id="categories"></ul>');
     console.log(jsonfile);
@@ -67,48 +79,49 @@ function populateInfo() {
 
         //if(jsonfile == undefined){
 
-          if (value.Category_Type == 'Movie') {
-            if(selections != undefined && selections[value.Category] == val.Movie){
-               divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category + '" checked/>' + val.Movie;
-            } else {
-                divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category + '" />' + val.Movie;
-            }
-
-          } else if (value.Category_Type == 'Director') {
-            if(selections != undefined && selections[value.Category] == val.Director){
-              divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category + '"  checked/>' + val.Director + ' &#x2012 ' + val.Movie;
-            }else {
-                divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
-            }
-
-          } else if(value.Category_Type == 'Actor') {
-            console.log(selections[value.Category]);
-            if( selections != undefined && selections[value.Category] == val.Actor){
-                divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category + '"  checked/>' + val.Actor + ' &#x2012 ' + val.Movie;
-            } else {
-                divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category  + '" />' + val.Actor + ' &#x2012 ' + val.Movie;
-            }
-
+        if (value.Category_Type == 'Movie') {
+          if (selections != undefined && selections[value.Category] == val.Movie) {
+            divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category + '" checked/>' + val.Movie;
+          } else {
+            divs += '<input type="radio" value="' + val.Movie + '" name="' + value.Category + '" />' + val.Movie;
           }
 
-       divs += '</br>';
+        } else if (value.Category_Type == 'Director') {
+          if (selections != undefined && selections[value.Category] == val.Director) {
+            divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category + '"  checked/>' + val.Director + ' &#x2012 ' + val.Movie;
+          } else {
+            divs += '<input type="radio" value="' + val.Director + '" name="' + value.Category + '"  />' + val.Director + ' &#x2012 ' + val.Movie;
+          }
+
+        } else if (value.Category_Type == 'Actor') {
+          console.log(selections[value.Category]);
+          if (selections != undefined && selections[value.Category] == val.Actor) {
+            divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category + '"  checked/>' + val.Actor + ' &#x2012 ' + val.Movie;
+          } else {
+            divs += '<input type="radio" value="' + val.Actor + '" name="' + value.Category + '" />' + val.Actor + ' &#x2012 ' + val.Movie;
+          }
+
+        }
+
+        divs += '</br>';
 
       });
 
-      divs += '<input type="radio" value="NA" name="' + value.Category  + '" /> N/A';
+      divs += '<input type="radio" value="NA" name="' + value.Category + '" /> N/A';
       divs += '</div>';
       divs += '</div>';
       divs += '</div>';
 
     });
+
     $('#categories').append(lis);
     $('#wizard').append(divs);
     $('#wizard').smartWizard({
-	    selected: 0,
+      selected: 0,
       enableAllSteps: !$.isEmptyObject(selections),
       onLeaveStep: leaveAStepCallback,
       onFinish: onFinishCallback,
-      labelFinish:'Save'
+      labelFinish: 'Save'
 
     });
 
@@ -118,22 +131,22 @@ function populateInfo() {
 
 function leaveAStepCallback(obj, context) {
 
-//  if (context.fromStep < context.toStep)
-    return validateSteps(context.fromStep);
+  //  if (context.fromStep < context.toStep)
+  return validateSteps(context.fromStep);
   //else return true;
 }
 
 
 function onFinishCallback(objs, context) {
-  if(validateSteps(context.fromStep)){
+  if (validateSteps(context.fromStep)) {
 
     $.ajax({
       type: "post",
       data: JSON.stringify(jsonfile),
       url: '/vote',
-      contentType : 'application/json',
+      contentType: 'application/json',
       dataType: "json" // response type
-    }).done(function(response){
+    }).done(function(response) {
       window.location.href = '/choices';
     });
   }
@@ -162,7 +175,7 @@ function runValidation(stepNumber) {
       currentCategory = String($('.StepTitle').eq(item).text()).trim();
       currentValue = $(val).val();
 
-//      console.log(jsonfile);
+      //      console.log(jsonfile);
       if (jsonfile == undefined) {
         //jsonfile.push({"user": "EdGuz", "selections": [{"currentCategory": currentCategory, "selection": currentValue}]});
         jsonfile = {

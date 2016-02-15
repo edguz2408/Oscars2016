@@ -5,7 +5,12 @@ html
     link(href="./styles/smart_wizard_vertical.css", rel="stylesheet", type="text/css")
   body(style="text-align:center;")
     block content
+      .modal-content(style="width:200px; margin-left:450px; text-align:center", display="none")
+       h3 Loading
+       img(src="images/default.gif")
       #wizard.swMain
+      if message
+        h1.text-center.error-message #{message}
       //
         <ul>
               <li><a href="#step-1">

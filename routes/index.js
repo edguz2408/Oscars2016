@@ -52,8 +52,22 @@ module.exports = function(passport) {
   router.get('/getData', function(req, res) {
     Nominations.find({}, function(err, nominations) {
       if (!err) {
-        console.log(nominations);
-        res.json(nominations);
+        var d = new Date("February 28, 2016 17:00:00");
+        var n = Date.now();
+
+        console.log('Limit Date:: '+ d);
+        console.log('Current Date:: '+ n);
+        console.log(n < d.getTime());
+
+        if(n < d.getTime()){
+          console.log(nominations);
+          res.json(nominations);
+        } else {
+          console.log('here!');
+          //res.render('choices', {message : 'Vote is not available'});
+          //res.redirect('choices');
+        }
+
       } else {
         console.log(err);
       }
