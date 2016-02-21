@@ -52,7 +52,7 @@ module.exports = function(passport) {
   router.get('/getData', function(req, res) {
     Nominations.find({}, function(err, nominations) {
       if (!err) {
-        var d = new Date("February 19, 2016 17:00:00");
+        var d = new Date("February 28, 2016 17:00:00");
         var n = Date.now();
 
         console.log('Limit Date:: '+ d);
