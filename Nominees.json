@@ -1,186 +1,169 @@
 {
-   "oscars2016":[
-      {
-         "Category":"BEST PICTURE",
-         "Nominees":[
-            {
-               "Movie":"The Big Short"
-            },
-            {
-               "Movie":"Bridge of Spies"
-            },
-            {
-               "Movie":"Brooklyn"
-            },
-            {
-               "Movie":"Mad Max: Fury Road"
-            },
-            {
-               "Movie":"The Martian"
-            },
-            {
-               "Movie":"The Revenant"
-            },
-            {
-               "Movie":"Room"
-            },
-            {
-               "Movie":"Spotlight"
-            }
-         ],
-         "Category_Type":"Movie"
-      },
-      {
-         "Category":"ACTOR IN A LEADING ROLE",
-         "Nominees":[
-            {
-               "Actor":"Bryan Cranston",
-               "Movie":"Trumbo"
-            },
-            {
-               "Actor":"Matt Damon",
-               "Movie":"The Martian"
-            },
-            {
-               "Actor":"Leonardo DiCaprio",
-               "Movie":"The Revenant"
-            },
-            {
-               "Actor":"Michael Fassbender",
-               "Movie":"Leonardo Steve Jobs"
-            },
-            {
-               "Actor":"Eddie Redmayne",
-               "Movie":"The Danish Girl"
-            }
-         ],
-         "Category_Type":"Actor"
-      },
-      {
-         "Category":"ACTRESS IN A LEADING ROLE",
-         "Nominees":[
-            {
-               "Actor":"Cate Blanchett",
-               "Movie":"Carol"
-            },
-            {
-               "Actor":"Brie Larson",
-               "Movie":"Room"
-            },
-            {
-               "Actor":"Jennifer Lawrence",
-               "Movie":"Joy"
-            },
-            {
-               "Actor":"Charlotte Rampling",
-               "Movie":"Leonardo Steve Jobs"
-            },
-            {
-               "Actor":"Saoirse Ronan",
-               "Movie":"Brooklyn"
-            }
-         ],
-         "Category_Type":"Actor"
-      },
-      {
-         "Category":"ACTOR IN A SUPPORTING ROLE",
-         "Nominees":[
-            {
-               "Actor":"Christian Bale",
-               "Movie":"The Big Short"
-            },
-            {
-               "Actor":"Tom Hardy",
-               "Movie":"The Revenant"
-            },
-            {
-               "Actor":"Mark Ruffalo",
-               "Movie":"Spotlight"
-            },
-            {
-               "Actor":"Mark Rylance",
-               "Movie":"Bridge of Spies"
-            },
-            {
-               "Actor":"Sylvester Stallone",
-               "Movie":"Creed"
-            }
-         ],
-         "Category_Type":"Actor"
-      },
-      {
-         "Category":"BEST DIRECTOR",
-         "Nominees":[
-            {
-               "Director":"Adam McKay",
-               "Movie":"The Big Short"
-            },
-            {
-               "Director":"George Miller",
-               "Movie":"Mad Max: Fury Road"
-            },
-            {
-               "Director":"Alejandro G. Iñárritu",
-               "Movie":"The Revenant"
-            },
-            {
-               "Director":"Lenny Abrahamson",
-               "Movie":"Room"
-            },
-            {
-               "Director":"Tom McCarthy",
-               "Movie":"Spotlight"
-            }
-         ],
-         "Category_Type":"Director"
-      },
-      {
-         "Category":"ACTRESS IN A SUPPORTING ROLE",
-         "Nominees":[
-            {
-               "Actor":"Jennifer Jason Leigh",
-               "Movie":"The Hateful Eight"
-            },
-            {
-               "Actor":"Rooney Mara",
-               "Movie":"Spotlight"
-            },
-            {
-               "Actor":"Alicia Vikander",
-               "Movie":"The Danish Girl"
-            },
-            {
-               "Actor":"Kate Winslet",
-               "Movie":"Steve Jobs"
-            }
-         ],
-         "Category_Type":"Actor"
-      },
-      {
-         "Category":"ANIMATED FEATURE FILM",
-         "Nominees":[
-            {
-               "Movie":"Anomalisa"
-            },
-            {
+  "oscars2016": [{
+    "Category": "BEST PICTURE",
+    "Nominees": [{
+      "Movie": "The Big Short"
+    }, {
+      "Movie": "Bridge of Spies"
+    }, {
+      "Movie": "Brooklyn"
+    }, {
+      "Movie": "Mad Max: Fury Road"
+    }, {
+      "Movie": "The Martian"
+    }, {
+      "Movie": "The Revenant"
+    }, {
+      "Movie": "Room"
+    }, {
+      "Movie": "Spotlight"
+    }],
+    "Category_Type": "Movie"
+  }, {
+    "Category": "ACTOR IN A LEADING ROLE",
+    "Nominees": [{
+      "Actor": "Bryan Cranston",
+      "Movie": "Trumbo"
+    }, {
+      "Actor": "Matt Damon",
+      "Movie": "The Martian"
+    }, {
+      "Actor": "Leonardo DiCaprio",
+      "Movie": "The Revenant"
+    }, {
+      "Actor": "Michael Fassbender",
+      "Movie": "Leonardo Steve Jobs"
+    }, {
+      "Actor": "Eddie Redmayne",
+      "Movie": "The Danish Girl"
+    }],
+    "Category_Type": "Actor"
+  }, {
+    "Category": "ACTRESS IN A LEADING ROLE",
+    "Nominees": [{
+      "Actor": "Cate Blanchett",
+      "Movie": "Carol"
+    }, {
+      "Actor": "Brie Larson",
+      "Movie": "Room"
+    }, {
+      "Actor": "Jennifer Lawrence",
+      "Movie": "Joy"
+    }, {
+      "Actor": "Charlotte Rampling",
+      "Movie": "Leonardo Steve Jobs"
+    }, {
+      "Actor": "Saoirse Ronan",
+      "Movie": "Brooklyn"
+    }],
+    "Category_Type": "Actor"
+  }, {
+    "Category": "ACTOR IN A SUPPORTING ROLE",
+    "Nominees": [{
+      "Actor": "Christian Bale",
+      "Movie": "The Big Short"
+    }, {
+      "Actor": "Tom Hardy",
+      "Movie": "The Revenant"
+    }, {
+      "Actor": "Mark Ruffalo",
+      "Movie": "Spotlight"
+    }, {
+      "Actor": "Mark Rylance",
+      "Movie": "Bridge of Spies"
+    }, {
+      "Actor": "Sylvester Stallone",
+      "Movie": "Creed"
+    }],
+    "Category_Type": "Actor"
+  }, {
+    "Category": "BEST DIRECTOR",
+    "Nominees": [{
+      "Director": "Adam McKay",
+      "Movie": "The Big Short"
+    }, {
+      "Director": "George Miller",
+      "Movie": "Mad Max: Fury Road"
+    }, {
+      "Director": "Alejandro G. Iñárritu",
+      "Movie": "The Revenant"
+    }, {
+      "Director": "Lenny Abrahamson",
+      "Movie": "Room"
+    }, {
+      "Director": "Tom McCarthy",
+      "Movie": "Spotlight"
+    }],
+    "Category_Type": "Director"
+  }, {
+    "Category": "ACTRESS IN A SUPPORTING ROLE",
+    "Nominees": [{
+      "Actor": "Jennifer Jason Leigh",
+      "Movie": "The Hateful Eight"
+    }, {
+      "Actor": "Rooney Mara",
+      "Movie": "Spotlight"
+    }, {
+      "Actor": "Alicia Vikander",
+      "Movie": "The Danish Girl"
+    }, {
+      "Actor": "Kate Winslet",
+      "Movie": "Steve Jobs"
+    }],
+    "Category_Type": "Actor"
+  }, {
+    "Category": "ANIMATED FEATURE FILM",
+    "Nominees": [{
+      "Movie": "Anomalisa"
+    }, {
 
-               "Movie":"Boy and the World"
-            },
-            {
+      "Movie": "Boy and the World"
+    }, {
 
-               "Movie":"Inside Out"
-            },
-            {
-               "Movie":"Shaun the Sheep Movie"
-            },
-            {
-              "Movie" : "When Marnie Was There"
-            }
-         ],
-         "Category_Type":"Movie"
-      }
-   ]
+      "Movie": "Inside Out"
+    }, {
+      "Movie": "Shaun the Sheep Movie"
+    }, {
+      "Movie": "When Marnie Was There"
+    }],
+    "Category_Type": "Movie"
+  }]
 }
 
 
-{"Category": "BEST PICTURE", "Nominees":[{"Movie":"The Big Short"}, {"Movie":"Bridge Of Spies"}, {"Movie":"Brooklyn"}, {"Movie":"Mad Max: Fury Road"}, {"Movie":"The Martian"}, {"Movie":"The Revenant"}, {"Movie":"Room"}, {"Movie":"Spotlight"}]
+{
+  "Category": "BEST PICTURE",
+  "Nominees": [{
+    "Movie": "The Big Short"
+  }, {
+    "Movie": "Bridge Of Spies"
+  }, {
+    "Movie": "Brooklyn"
+  }, {
+    "Movie": "Mad Max: Fury Road"
+  }, {
+    "Movie": "The Martian"
+  }, {
+    "Movie": "The Revenant"
+  }, {
+    "Movie": "Room"
+  }, {
+    "Movie": "Spotlight"
+  }]
+
+
+  {
+  "Category": "VISUAL EFFECTS",
+  "Nominees": [{
+    "Movie": "Ex Machina"
+  }, {
+    "Movie": "Mad Max: Fury Road"
+  }, {
+    "Movie": "The Martian"
+  }, {
+    "Movie": "The Revenant"
+  }, {
+    "Movie": "Star Wars: The Force Awakens"
+  }],
+  "Category_Type" : "Movie"
+}

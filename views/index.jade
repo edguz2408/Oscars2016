@@ -5,10 +5,12 @@ html
     link(href="./styles/smart_wizard_vertical.css", rel="stylesheet", type="text/css")
   body(style="text-align:center;")
     block content
-      .modal-content(style="width:200px; margin-left:450px; text-align:center", display="none")
+      .modal-content(style="width:200px; margin-left: auto; margin-right: auto; text-align:center", display="none")
        h3 Loading
        img(src="images/default.gif")
       #wizard.swMain
+      #choices
+        //h1(style="text-align:center;") Vote is not available
       if message
         h1.text-center.error-message #{message}
       //

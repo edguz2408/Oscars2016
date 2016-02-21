@@ -1,10 +1,11 @@
 extends layout
 block content
-  h3 Winning Categories
-  hr
-  .modal-content(style="width:200px; margin-left:450px; text-align:center")
+  .modal-content(style="width:200px; margin-left: auto; margin-right: auto; text-align:center", display="none")
     h3 Loading
     img(src="images/default.gif")
+  h3 Winning Categories
+  hr
+  
   #winners
     table.table.table-hover.table-bordered
       thead
@@ -18,6 +19,9 @@ block content
   h3 Winners By Category
   hr
   #container
+  h3 Categories Without Winners
+  hr
+  #noWinners
   #summary
       
   script(src="/javascripts/results.js")

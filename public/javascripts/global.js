@@ -10,6 +10,7 @@ $(document).ready(function() {
   setTimeout(function() {
     $('.modal-content').hide();
     populateInfo();
+    loadAllChoices();
   }, 3000);
 
 
@@ -40,16 +41,46 @@ function loadChoices() {
 
 }
 
+function loadAllChoices(){
+
+  $.getJSON('/allchoices', function(response){
+    var content = '';
+    $('#choices')
+    .append('<h1 style="text-align:center;"> Vote is not available </h1>');
+    $.each(response, function(i, item){
+      content += '<h3>' + item.user + '</h3>';
+      content += '<table class="table">';
+      content += '<tr>';
+      content += '<td> <b>Category</b> </td>';
+      content += '<td> <b>Choice</b> </td>';
+      content += '</tr>';
+
+      $.each(item.selections, function(index, val) {
+        content += '<tr>';
+        content += '<td style="width:200px;">' + val.currentCategory + '</td>';
+        content += '<td style="width:200px;">' + val.selection + '</td>';
+        content += '</tr>';
+
+      });
+      content += '</table>';
+    });
+
+    $('#choices').append(content);
+
+  });
+
+
+}
+
 function populateInfo() {
 
   var selections = obj;
   //console.log();
   console.log('here');
-  $('#wizard')
-  .append('<h1 id="message" style="text-align:center;"> Vote is not available </h1>');
+
   $.getJSON('getData', function(response) {
 
-    $('#message').hide();
+    $('#choices').hide();
     var lis = '';
     var divs = '';
     //var choices = '';
