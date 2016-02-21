@@ -95,8 +95,8 @@ function populateInfo() {
       //console.log(value.Category);
 
       //lis
-      lis += '<li><a href="#step-' + parseInt(index + 1) + '" style="width:350px;">'
-      lis += '<label class="stepNumber">' + parseInt(index + 1) + '</label>';
+      lis += '<li><a href="#step-' + parseInt(index + 1) + '" style="width:450px;">'
+      lis += '<label style="margin-right:40px;" class="stepNumber">' + parseInt(index + 1) + '</label>';
       lis += '<span class="stepDesc">' + value.Category + '</br></span>';
       lis += '</a></li>';
 

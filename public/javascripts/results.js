@@ -234,7 +234,7 @@ function showWinners() {
       SummaryTable += '<table class="table table-hover table-bordered">';
       SummaryTable += '<tr>';
       SummaryTable += '<th> User </th>';
-      SummaryTable += '<th> Total Earned </th>';
+      SummaryTable += '<th> Total Earned + Refunds</th>';
       SummaryTable += '</tr>';
 
       $.map(summary, function(n, i) {

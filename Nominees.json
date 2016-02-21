@@ -167,3 +167,37 @@
   }],
   "Category_Type" : "Movie"
 }
+
+//export LC_ALL=C
+
+{
+"Category": "WRITING (ADAPTED SCREENPLAY)",
+"Nominees": [{
+  "Movie": "The Big Short"
+}, {
+  "Movie": "Brooklyn"
+}, {
+  "Movie": "Carol"
+}, {
+  "Movie": "The Martian"
+}, {
+  "Movie": "Room"
+}],
+"Category_Type" : "Movie"
+},
+
+{
+"Category": "WRITING (ORIGINAL SCREENPLAY)",
+"Nominees": [{
+  "Movie": "Bridge of Spies"
+}, {
+  "Movie": "Ex Machina"
+}, {
+  "Movie": "Inside Out"
+}, {
+  "Movie": "Spotlight"
+}, {
+  "Movie": "Straight Outta Compton"
+}],
+"Category_Type" : "Movie"
+}
