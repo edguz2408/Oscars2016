@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function getInfo() {
 
-  $.getJSON('/getData', function(response) {
+  $.getJSON('/getDataForResults', function(response) {
     console.log(response);
     $('#categories').append('<option> --Select Item --</option>');
     $.each(response, function(i, item) {

@@ -64,7 +64,8 @@ function updateAmount() {
 
       $.each(response, function(i, item) {
         $.each(item.selections, function(index, it) {
-          if (voters[it.currentCategory] == it.currentCategory) {
+          if (voters[it.currentCategory] == it.currentCategory
+              && it.selection != 'NA' ) {
 
             if (amounts[it.currentCategory] == undefined) {
               amounts[it.currentCategory] = 1;
@@ -116,6 +117,7 @@ function showWinners() {
     var currentLostCategory;
     var currentLostUser;
     var currentUser;
+    var userSelection = {};
     var total;
     var summary = {};
 
@@ -126,6 +128,8 @@ function showWinners() {
       $.each(result, function(index, value) {
         $.each(choices, function(i, item) {
           $.each(item.selections, function(x, val) {
+
+            userSelection[val.currentCategory] = val.selection;
 
             if (value.winner == val.selection && value.winners > 0) {
               currentUser = item.user;
@@ -168,7 +172,8 @@ function showWinners() {
               } else {
                 summary[item.user] += parseInt(value.amount / value.winners);
               }
-            } else if(value.winners === 0){
+            } else if(value.winners == 0 && userSelection[value.category] != 'NA'){
+              console.log(val.selection);
               if(value.category != currentLostCategory){
                 returnsTable += '<div>'
                 returnsTable += '<h5>' + value.category + '</h5>';
@@ -217,8 +222,6 @@ function showWinners() {
         returnsTable += '</table></div>';
         tableContent += '</table></div></div>';
 
-        console.log(SummaryTable);
-        console.log(tableContent);
 
       });
 
@@ -226,8 +229,6 @@ function showWinners() {
       $('#container').append(tableContent);
       $('#noWinners').append(returnsTable);
 
-
-      console.log(summary);
       SummaryTable += '<div>';
       SummaryTable += '<h3> Summary </h3>';
       SummaryTable += '<hr/>';

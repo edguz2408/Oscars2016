@@ -138,7 +138,12 @@ function populateInfo() {
 
       });
 
-      divs += '<input type="radio" value="NA" name="' + value.Category + '" /> N/A';
+      if (selections[value.Category] == 'NA') {
+        divs += '<input type="radio" value="NA" name="' + value.Category + '" checked /> N/A';
+      } else {
+        divs += '<input type="radio" value="NA" name="' + value.Category + '" /> N/A';
+      }
+
       divs += '</div>';
       divs += '</div>';
       divs += '</div>';
@@ -216,7 +221,6 @@ function runValidation(stepNumber) {
             "selection": currentValue
           }]
         };
-        console.log(jsonfile.selections);
       } else if (jsonfile.selections[item] == undefined) {
         jsonfile.selections.push({
           "currentCategory": currentCategory,
@@ -233,7 +237,6 @@ function runValidation(stepNumber) {
   });
   if (choice == false)
     setError(stepNumber, true);
-  console.log(JSON.stringify(jsonfile));
   return choice;
 
 }
@@ -254,18 +257,3 @@ function setError(stepNumber, iserror) {
 
   return false;
 }
-
-/*<li><a href="#step-1">
-      <label class="stepNumber">1</label>
-      <span class="stepDesc">
-         Step 1<br />
-         <small>Step 1 description</small>
-      </span>
-  </a></li>
-
-  <div id="step-1">
-      <h2 class="StepTitle">Step 1 Content</h2>
-       step content
-  </div>
-
-  */
