@@ -41,15 +41,18 @@ function loadChoices() {
 
 }
 
-function loadAllChoices(){
+function loadAllChoices() {
 
-  $.getJSON('/allchoices', function(response){
+  $.getJSON('/allchoices', function(response) {
     var content = '';
+    var amount = 0;
+    var grandTotal = 0;
+
     $('#choices')
-    .append('<h1 style="text-align:center;"> Vote is not available </h1>');
-    $.each(response, function(i, item){
+      .append('<h1 style="text-align:center;"> Vote is not available </h1>');
+    $.each(response, function(i, item) {
       content += '<h3>' + item.user + '</h3>';
-      content += '<table class="table">';
+      content += '<table class="table table-bordered">';
       content += '<tr>';
       content += '<td> <b>Category</b> </td>';
       content += '<td> <b>Choice</b> </td>';
@@ -61,10 +64,15 @@ function loadAllChoices(){
         content += '<td style="width:200px;">' + val.selection + '</td>';
         content += '</tr>';
 
-      });
-      content += '</table>';
-    });
+        if (val.selection != 'NA')
+          amount++;
 
+      });
+      content += '</table> <div> <b><h4> Total $' + amount * 100 + '</h4></b> </div> <hr/>';
+      grandTotal += amount;
+      amount = 0;
+    });
+    content += '<div> <b><h2> Grand Total $' + grandTotal * 100 + '</h2></b> </div>'
     $('#choices').append(content);
 
   });
