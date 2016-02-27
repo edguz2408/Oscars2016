@@ -107,7 +107,33 @@ function updateAmount() {
 
 }
 
+function hideResults(){
+
+  $('#container').hide();
+  $('#noWinners').hide();
+  $('h3').hide();
+  $('hr').hide();
+  $('#winners').children().hide();
+  $('#summary').hide();
+
+  $('#winners').append('<h2 style="margin-left:auto; margin-right:auto; text-align:center;">Results not yet available</h2>');
+
+}
+
+function showResults(){
+
+  $('#container').show();
+  $('#noWinners').show();
+  $('h3').show();
+  $('hr').show();
+  $('#winners').children().show();
+  $('#summary').show();
+  $('h2').hide();
+}
+
 function showWinners() {
+  hideResults();
+
   $.getJSON('/winnersinfo', function(response) {
     var tableContent = '';
     var SummaryTable = '';
@@ -120,6 +146,11 @@ function showWinners() {
     var userSelection = {};
     var total;
     var summary = {};
+
+    if(result.length > 0)
+      showResults();
+    else
+        return false;
 
     console.log(result);
 
